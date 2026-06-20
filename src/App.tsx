@@ -183,7 +183,7 @@ const App: React.FC = () => {
                   src="voyage-212assurances-1000x680.jpg" 
                   alt="Mme. FATIMA EL OMRANI" 
                   className="w-full h-full object-cover object-top"
-                  referrerPolicy="no-referrer"
+                  referrerPolicy="voyage-212assurances-1000x680.jpg"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-axa-blue rounded-2xl -z-0 hidden lg:block"></div>
