@@ -14,6 +14,8 @@ const App: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [submittingPhone, setSubmittingPhone] = useState(false);
+  const [isPopupSubmitted, setIsPopupSubmitted] = useState(false);
+  const [submittingPopupPhone, setSubmittingPopupPhone] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const slides = [
@@ -27,7 +29,7 @@ const App: React.FC = () => {
       image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop",
       tagline: "Assurance Automobile AXA",
       title: "Prenez la route en toute sérénité.",
-      description: "Garanties d'assistance exceptionnelles 24/7 et formules flexibles pour rouler l'esprit tranquille."
+      description: "Garanties d'assistance exceptionnelles 24/7 and formules flexibles pour rouler l'esprit tranquille."
     },
     {
       image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2069&auto=format&fit=crop",
@@ -40,13 +42,23 @@ const App: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
-      if (window.scrollY > 1000 && !showPopup) {
-        // setShowPopup(true); // Temporarily disabled for better UX during dev
-      }
     };
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [showPopup]);
+
+    // Auto-trigger the special offer popup after 5 seconds to maximize conversion
+    const timer = setTimeout(() => {
+      const hasClosed = sessionStorage.getItem('popup_closed');
+      const hasSubmitted = sessionStorage.getItem('popup_submitted');
+      if (!hasClosed && !hasSubmitted) {
+        setShowPopup(true);
+      }
+    }, 5000);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      clearTimeout(timer);
+    };
+  }, []);
 
   // Slideshow automatic rotation effect
   useEffect(() => {
@@ -126,7 +138,7 @@ const App: React.FC = () => {
               </AnimatePresence>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button 
-                  onClick={navigateToContact}
+                  onClick={() => setShowPopup(true)}
                   className="bg-axa-red text-white px-8 py-4 rounded-sm font-bold text-lg flex items-center justify-center gap-2 hover:bg-red-700 transition-all shadow-xl cursor-pointer"
                 >
                   Obtenir un devis gratuit <ArrowRight />
@@ -212,7 +224,7 @@ const App: React.FC = () => {
                 ))}
               </div>
               <button 
-                onClick={navigateToContact}
+                onClick={() => setShowPopup(true)}
                 className="bg-axa-blue text-white px-8 py-3 rounded-sm font-bold hover:bg-blue-950 transition-all cursor-pointer"
               >
                 Contactez-nous dès maintenant
@@ -711,25 +723,142 @@ const App: React.FC = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-axa-blue/60 backdrop-blur-sm" 
-              onClick={() => setShowPopup(false)}
+              className="absolute inset-0 bg-axa-blue/70 backdrop-blur-sm" 
+              onClick={() => {
+                sessionStorage.setItem('popup_closed', 'true');
+                setShowPopup(false);
+              }}
             ></motion.div>
             <motion.div 
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="relative bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden p-6 md:p-12 text-center zellig-pattern"
+              className="relative bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden p-6 md:p-10 text-center zellig-pattern border border-slate-100 z-50"
             >
-              <button onClick={() => setShowPopup(false)} className="absolute top-6 right-6 text-slate-400 hover:text-axa-blue transition-all"><X /></button>
-              <div className="w-20 h-20 bg-axa-red/10 text-axa-red rounded-full flex items-center justify-center mx-auto mb-8 shadow-inner"><Phone size={40} /></div>
-              <h2 className="text-3xl font-extrabold text-axa-blue mb-4">Besoin d'un conseil immédiat ?</h2>
-              <p className="text-slate-500 mb-10 text-lg">Nos experts sont à votre écoute pour vous guider vers la meilleure protection.</p>
-              <div className="flex flex-col gap-4">
-                <a href="tel:0522665908" className="block bg-axa-blue text-white py-5 rounded-xl font-bold text-xl shadow-xl shadow-axa-blue/20 hover:bg-blue-900 transition-all flex items-center justify-center gap-3">
-                  <Phone /> 05 22 66 59 08
-                </a>
-                <button onClick={() => setShowPopup(false)} className="text-slate-400 font-bold text-sm uppercase tracking-widest">Peut-être plus tard</button>
-              </div>
+              <button 
+                onClick={() => {
+                  sessionStorage.setItem('popup_closed', 'true');
+                  setShowPopup(false);
+                }} 
+                className="absolute top-6 right-6 text-slate-400 hover:text-axa-blue transition-all cursor-pointer"
+              >
+                <X />
+              </button>
+              
+              {isPopupSubmitted ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="py-6 space-y-6"
+                >
+                  <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                    <CheckCircle2 size={36} />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-bold text-axa-blue">Demande Enregistrée !</h3>
+                    <p className="text-slate-500 mt-2 text-sm leading-relaxed">
+                      Merci ! Un conseiller d'Assurances ELOMRANI vous contactera sur votre mobile d'ici quelques minutes pour votre offre spéciale.
+                    </p>
+                  </div>
+                  <button 
+                    onClick={() => {
+                      sessionStorage.setItem('popup_submitted', 'true');
+                      setShowPopup(false);
+                    }}
+                    className="w-full bg-axa-blue text-white py-3.5 rounded-xl font-bold hover:bg-blue-900 transition-all cursor-pointer"
+                  >
+                    Fermer
+                  </button>
+                </motion.div>
+              ) : (
+                <form 
+                  className="space-y-6"
+                  onSubmit={async (e) => {
+                    e.preventDefault();
+                    setSubmittingPopupPhone(true);
+                    const formData = new FormData(e.currentTarget);
+                    const rawPhone = formData.get('phone');
+                    const data = {
+                      name: "Client Offre Spéciale",
+                      phone: rawPhone,
+                      type: "Offre Spéciale",
+                      message: "Demande d'informations sur l'offre spéciale depuis la popup d'appel à l'action"
+                    };
+
+                    try {
+                      const response = await fetch('/api/contact', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(data)
+                      });
+                      const result = await response.json();
+                      if (result.success) {
+                        setIsPopupSubmitted(true);
+                        sessionStorage.setItem('popup_submitted', 'true');
+                      } else {
+                        alert(result.message || "Une erreur est survenue.");
+                      }
+                    } catch (error) {
+                      alert("Erreur de connexion. Veuillez réessayer.");
+                    } finally {
+                      setSubmittingPopupPhone(false);
+                    }
+                  }}
+                >
+                  <div className="w-16 h-16 bg-axa-red/10 text-axa-red rounded-full flex items-center justify-center mx-auto mb-2 shadow-inner">
+                    <ShieldCheck size={36} />
+                  </div>
+                  <div className="space-y-2">
+                    <span className="text-axa-red font-bold uppercase tracking-wider text-xs block">Offre Exclusive</span>
+                    <h2 className="text-2xl md:text-3xl font-extrabold text-axa-blue">Offre Spéciale Assurances</h2>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Contactez-nous dès aujourd'hui pour en savoir plus sur votre offre spéciale.
+                    </p>
+                  </div>
+
+                  <div className="space-y-2 text-left">
+                    <label className="text-xs font-bold text-axa-blue uppercase tracking-wider block">Numéro de Mobile</label>
+                    <div className="relative">
+                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm select-none border-r border-slate-200 pr-3">+212</span>
+                      <input 
+                        name="phone" 
+                        type="tel" 
+                        placeholder="6 12 34 56 78" 
+                        className="w-full pl-22 pr-4 py-3.5 rounded-xl border border-slate-200 outline-none focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-bold text-slate-700 tracking-wide text-lg" 
+                        required 
+                      />
+                    </div>
+                  </div>
+
+                  <button 
+                    type="submit" 
+                    disabled={submittingPopupPhone}
+                    className="w-full bg-axa-red text-white py-4 rounded-xl font-bold text-base hover:bg-red-700 transition-all shadow-xl shadow-red-500/20 flex items-center justify-center gap-3 disabled:opacity-50 cursor-pointer"
+                  >
+                    {submittingPopupPhone ? (
+                      <>
+                        <Loader2 className="animate-spin" size={18} />
+                        Envoi en cours...
+                      </>
+                    ) : (
+                      <>
+                        <Phone size={18} />
+                        Profiter de l'offre spéciale
+                      </>
+                    )}
+                  </button>
+
+                  <div className="pt-2 border-t border-slate-100">
+                    <p className="text-xs text-slate-400 mb-2">Ou contactez notre agence directement :</p>
+                    <a 
+                      href="tel:0522665908" 
+                      className="inline-flex items-center gap-2 text-axa-blue font-bold text-sm hover:underline"
+                    >
+                      <Phone size={14} /> 05 22 66 59 08
+                    </a>
+                  </div>
+                </form>
+              )}
             </motion.div>
           </div>
         )}
