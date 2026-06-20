@@ -6,6 +6,7 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Chatbot from './components/Chatbot';
+import WhatsAppWidget from './components/WhatsAppWidget';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<'home' | 'history' | 'offers'>('home');
@@ -105,7 +106,7 @@ const App: React.FC = () => {
                 className="absolute inset-0"
               >
                 <img 
-                  src={ae-logo.svg} 
+                  src={slides[currentSlide].image} 
                   alt="Assurances ELOMRANI" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
@@ -213,9 +214,7 @@ const App: React.FC = () => {
               <div className="space-y-4 mb-10">
                 {[
                   "Prise en charge des soins médicaux d'urgence à l'étranger",
-                  "Assistance médicale et rapatriement sanitaire H24",
-                  "Couverture en cas de perte, vol ou détérioration de bagages",
-                  "Assistance juridique et responsabilité civile à l'étranger"
+                  "Assistance médicale et rapatriement sanitaire H24"
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-3">
                     <CheckCircle2 className="text-axa-red" />
@@ -332,6 +331,26 @@ const App: React.FC = () => {
                     <p className="text-slate-500 text-sm">contact@axa-elomrani.ma</p>
                   </div>
                 </div>
+                <a 
+                  href="https://wa.me/212522665908" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-start gap-4 p-4 bg-emerald-50/50 rounded-2xl hover:bg-emerald-50 border border-emerald-100 hover:border-emerald-300 transition-all cursor-pointer group"
+                >
+                  <div className="w-12 h-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform duration-300">
+                    <MessageCircle fill="currentColor" size={24} />
+                  </div>
+                  <div>
+                    <p className="font-bold text-emerald-700 flex items-center gap-2">
+                      WhatsApp 
+                      <span className="inline-flex items-center gap-1 text-[10px] bg-emerald-500 text-white font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
+                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
+                        Direct
+                      </span>
+                    </p>
+                    <p className="text-emerald-900/70 text-sm font-medium mt-0.5">Discuter en direct sur WhatsApp</p>
+                  </div>
+                </a>
               </div>
             </div>
             <div className="lg:col-span-3">
@@ -714,6 +733,9 @@ const App: React.FC = () => {
 
       {/* Chatbot */}
       <Chatbot />
+
+      {/* WhatsApp Chat Button */}
+      <WhatsAppWidget />
 
       {/* Popup */}
       <AnimatePresence>
