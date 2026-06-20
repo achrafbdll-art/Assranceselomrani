@@ -648,8 +648,8 @@ const App: React.FC = () => {
             <div className="flex items-center gap-3 mb-8">
               <div className="relative group">
                 <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/1200px-AXA_Logo.svg.png" 
-                  alt="Assurances ELOMRANI" 
+                  src=" flex items-center justify-center bg-white p-1 md:p-1.5 rounded-lg shadow-md border border-slate-200/50 transition-all duration-300 group-hover:scale-105">" 
+                  alt="Assurances ELOMRANI"ae-logo.svg
                   className="h-12 w-auto" 
                   referrerPolicy="no-referrer"
                 />
