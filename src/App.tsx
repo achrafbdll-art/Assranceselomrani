@@ -180,7 +180,7 @@ const App: React.FC = () => {
             <div className="relative">
               <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl relative z-10">
                 <img 
-                  src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=1974&auto=format&fit=crop" 
+                  src="voyage-212assurances-1000x680.jpg" 
                   alt="Mme. FATIMA EL OMRANI" 
                   className="w-full h-full object-cover object-top"
                   referrerPolicy="no-referrer"
