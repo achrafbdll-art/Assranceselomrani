@@ -93,7 +93,7 @@ const App: React.FC = () => {
                 className="absolute inset-0"
               >
                 <img 
-                  src={ae-logo.svg} 
+                  src={aelogo.svg} 
                   alt="Assurances ELOMRANI" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
