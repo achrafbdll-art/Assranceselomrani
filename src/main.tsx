@@ -1,12 +1,12 @@
-import logo from './ae-logo.svg';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import './index.css';
+import logo from 'ae-logo.svg';
+import<img src={ae-logo.svg} alt="Assurances ELOMRANI" ... />
 
-function App() {
-  return (
-    <div>
-      <img src={logo} alt="Assurances ELOMRANI" />
-    </div>
-  );
-}
-
-export default App;
-
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
