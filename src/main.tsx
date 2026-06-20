@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import './index.css';
 import logo from 'ae-logo.svg';
-import<img src={logo} alt="Assurances ELOMRANI" ... />
+import<img src={ae-logo.svg} alt="Assurances ELOMRANI" ... />
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
