@@ -1,9 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, X, Send, Bot, User, Loader2 } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { GoogleGenAI } from "@google/genai";
-
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 interface Message {
   role: 'user' | 'model';
@@ -36,26 +33,16 @@ const Chatbot: React.FC = () => {
     setIsLoading(true);
 
     try {
-      const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
-        contents: [
-          {
-            role: "user",
-            parts: [{ text: `Tu es l'assistant virtuel de l'agence d'assurance ELOMRANI, agent général AXA à Casablanca. 
-            Réponds aux questions des clients sur les assurances (Auto, Habitation, Santé, Pro, Épargne).
-            Sois professionnel, accueillant et concis. 
-            Si on te demande des coordonnées : 
-            - Adresse : 108 Bd Ali Yaâta, Casablanca 20250
-            - Téléphone : 05 22 66 59 08
-            - Email : contact@axa-elomrani.ma
-            L'agent général est Mme FATIMA EL OMRANI.
-            
-            Question du client : ${userMessage}` }]
-          }
-        ],
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ message: userMessage })
       });
 
-      const botResponse = response.text || "Désolé, je n'ai pas pu traiter votre demande. Veuillez nous contacter directement.";
+      const data = await response.json();
+      const botResponse = data.reply || "Désolé, je n'ai pas pu traiter votre demande. Veuillez nous contacter directement.";
       setMessages(prev => [...prev, { role: 'model', text: botResponse }]);
     } catch (error) {
       console.error("Chatbot error:", error);
