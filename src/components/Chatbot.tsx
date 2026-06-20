@@ -42,10 +42,7 @@ const Chatbot: React.FC = () => {
       });
 
       const data = await response.json();
-      const botResponse = data.reply || "Merci pour votre message ! Pour une prise en charge immédiate et personnalisée de votre demande, nous vous invitons à nous contacter directement par téléphone ou par e-mail.
-📞 Téléphone : 05 22 66 59 08
-📧 E-mail : contact@assuranceselomrani.com
-N'hésitez pas à nous solliciter pour toute précision supplémentaire. Notre équipe est à votre entière disposition pour vous accompagner."";
+      const botResponse = data.reply || "Désolé, je n'ai pas pu traiter votre demande. Veuillez nous contacter directement.";
       setMessages(prev => [...prev, { role: 'model', text: botResponse }]);
     } catch (error) {
       console.error("Chatbot error:", error);

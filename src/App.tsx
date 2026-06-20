@@ -93,7 +93,7 @@ const App: React.FC = () => {
                 className="absolute inset-0"
               >
                 <img 
-                  src="/ae-logo.svg" 
+                  src={slides[currentSlide].image} 
                   alt="Assurances ELOMRANI" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
@@ -178,12 +178,12 @@ const App: React.FC = () => {
         <section className="py-20 px-6 md:px-12 lg:px-24 bg-slate-50 relative overflow-hidden zellig-pattern">
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl relative z-10">
+              <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl relative z-10 bg-slate-100">
                 <img 
-                  src="voyage-212assurances-1000x680.jpg" 
-                  alt="Mme. FATIMA EL OMRANI" 
-                  className="w-full h-full object-cover object-top"
-                  referrerPolicy="voyage-212assurances-1000x680.jpg"
+                  src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop" 
+                  alt="Assurance Voyage - Vol Avion" 
+                  className="w-full h-full object-cover object-center"
+                  referrerPolicy="no-referrer"
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 w-48 h-48 bg-axa-blue rounded-2xl -z-0 hidden lg:block"></div>
@@ -192,18 +192,18 @@ const App: React.FC = () => {
             <div>
               <span className="text-axa-red font-bold uppercase tracking-widest text-sm mb-4 block">L'expertise à votre service</span>
               <h2 className="text-3xl md:text-4xl font-extrabold text-axa-blue mb-6">
-                Mme. FATIMA EL OMRANI <br />
-                         <span className="text-slate-500 text-xl md:text-2xl font-semibold">Voyager l'état d'esprit tranquille.</span>
+                Votre Assurance Voyage <br />
+                <span className="text-slate-500 text-xl md:text-2xl font-semibold">Voyager l'état d'esprit tranquille.</span>
               </h2>
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                Avec plus de 15 ans d'expérience dans le secteur des assurances à Casablanca, notre agence s'engage à vous offrir un conseil personnalisé et une réactivité exemplaire.
+                Bénéficiez d'une couverture complète dans le monde entier pour vos séjours touristiques, professionnels, familiaux ou d'études. Nous prenons soin de vous, où que vous soyez.
               </p>
               <div className="space-y-4 mb-10">
                 {[
-                  "Proximité et écoute active",
-                  "Conseils personnalisés selon vos besoins",
-                  "Accompagnement dédié en cas de sinistre",
-                  "Réactivité et transparence totale"
+                  "Prise en charge des soins médicaux d'urgence à l'étranger",
+                  "Assistance médicale et rapatriement sanitaire H24",
+                  "Couverture en cas de perte, vol ou détérioration de bagages",
+                  "Assistance juridique et responsabilité civile à l'étranger"
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center gap-3">
                     <CheckCircle2 className="text-axa-red" />
@@ -212,10 +212,10 @@ const App: React.FC = () => {
                 ))}
               </div>
               <button 
-                onClick={() => setActiveSection('history')}
-                className="border-2 border-axa-blue text-axa-blue px-8 py-3 rounded-sm font-bold hover:bg-axa-blue hover:text-white transition-all"
+                onClick={navigateToContact}
+                className="bg-axa-blue text-white px-8 py-3 rounded-sm font-bold hover:bg-blue-950 transition-all cursor-pointer"
               >
-                Découvrir nos valeurs
+                Contactez-nous dès maintenant
               </button>
             </div>
           </div>
@@ -571,9 +571,9 @@ const App: React.FC = () => {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 py-4 md:py-6 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-3 md:py-4' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center relative">
           <button onClick={() => setActiveSection('home')} className="flex items-center gap-2 md:gap-3 group">
-            <div className="relative flex items-center justify-center bg-white p-1 md:p-1.5 rounded-lg shadow-md border border-slate-200/50 transition-all duration-300 group-hover:scale-105">">
+            <div className="relative">
               <img 
-                src="ae-logo.svg" 
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/1200px-AXA_Logo.svg.png" 
                 alt="Assurances ELOMRANI" 
                 className="h-8 md:h-14 w-auto" 
                 referrerPolicy="no-referrer"
@@ -588,7 +588,7 @@ const App: React.FC = () => {
 
           <div className="hidden md:flex items-center gap-8">
             <button onClick={() => setActiveSection('home')} className={`font-semibold text-sm transition-colors hover:text-axa-red ${isScrolled ? 'text-axa-blue' : 'text-white'}`}>Accueil</button>
-            <button onClick={() => setActiveSection('history')} className={`font-semibold text-sm transition-colors hover:text-axa-red ${isScrolled ? 'text-axa-blue' : 'text-white'}`}>Historique</button>
+            <button onClick={() => setActiveSection('history')} className={`font-semibold text-sm transition-colors hover:text-axa-red ${isScrolled ? 'text-axa-blue' : 'text-white'}`}>Historique d'AXA</button>
             <button onClick={() => setActiveSection('offers')} className={`font-semibold text-sm transition-colors hover:text-axa-red ${isScrolled ? 'text-axa-blue' : 'text-white'} cursor-pointer`}>Offres</button>
             <button onClick={navigateToContact} className="bg-axa-red text-white px-6 py-2.5 rounded-sm font-bold text-sm hover:bg-red-700 transition-all shadow-lg">CONTACTER NOUS</button>
           </div>
@@ -616,7 +616,7 @@ const App: React.FC = () => {
           className={`flex flex-col items-center gap-1 transition-colors ${activeSection === 'history' ? 'text-axa-blue' : 'text-slate-400'}`}
         >
           <ShieldCheck size={20} />
-          <span className="text-[10px] font-bold uppercase">Histoire</span>
+          <span className="text-[10px] font-bold uppercase">Historique d'AXA</span>
         </button>
         <button 
           onClick={() => setActiveSection('offers')} 
@@ -648,8 +648,8 @@ const App: React.FC = () => {
             <div className="flex items-center gap-3 mb-8">
               <div className="relative group">
                 <img 
-                  src=" flex items-center justify-center bg-white p-1 md:p-1.5 rounded-lg shadow-md border border-slate-200/50 transition-all duration-300 group-hover:scale-105">" 
-                  alt="Assurances ELOMRANI"ae-logo.svg
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/1200px-AXA_Logo.svg.png" 
+                  alt="Assurances ELOMRANI" 
                   className="h-12 w-auto" 
                   referrerPolicy="no-referrer"
                 />
@@ -677,7 +677,7 @@ const App: React.FC = () => {
             <h4 className="font-bold text-lg mb-6">Liens Rapides</h4>
             <ul className="space-y-4 text-white/60">
               <li><button onClick={() => setActiveSection('home')} className="hover:text-white transition-all">Accueil</button></li>
-              <li><button onClick={() => setActiveSection('history')} className="hover:text-white transition-all">Notre Histoire</button></li>
+              <li><button onClick={() => setActiveSection('history')} className="hover:text-white transition-all">Historique d'AXA</button></li>
               <li><button onClick={() => setActiveSection('offers')} className="hover:text-white transition-all cursor-pointer">Offres</button></li>
             </ul>
           </div>
