@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   ShieldCheck, ArrowRight, Phone, CheckCircle2, Car, Home, HeartPulse, 
-  Briefcase, TrendingUp, Quote, MapPin, Mail, X, Menu, ChevronRight, 
+  Briefcase, TrendingUp, Quote, MapPin, Mail, X, Menu, ChevronRight, ChevronLeft,
   Facebook, Instagram, Linkedin, Twitter, MessageCircle, Github, Globe, Send, Loader2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -14,6 +14,28 @@ const App: React.FC = () => {
   const [showPopup, setShowPopup] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [submittingPhone, setSubmittingPhone] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  const slides = [
+    {
+      image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+      tagline: "Votre partenaire de confiance à Casablanca",
+      title: "Votre assurance, notre engagement.",
+      description: "Protégez ce qui compte vraiment pour vous avec l'expertise d'un agent général AXA engagé et proche de vous."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop",
+      tagline: "Assurance Automobile AXA",
+      title: "Prenez la route en toute sérénité.",
+      description: "Garanties d'assistance exceptionnelles 24/7 et formules flexibles pour rouler l'esprit tranquille."
+    },
+    {
+      image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2069&auto=format&fit=crop",
+      tagline: "Assurance Habitation & Santé",
+      title: "Protégez votre foyer et vos proches.",
+      description: "Notre accompagnement sur mesure pour assurer votre toit, votre santé et la prévoyance de votre famille."
+    }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,6 +47,22 @@ const App: React.FC = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [showPopup]);
+
+  // Slideshow automatic rotation effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(interval);
+  }, [slides.length]);
+
+  const handlePrevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const handleNextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
 
   const navigateToContact = () => {
     setActiveSection('home');
@@ -42,38 +80,54 @@ const App: React.FC = () => {
         exit={{ opacity: 0, y: -20 }}
         className="page-section"
       >
-        {/* Hero */}
-        <section className="relative h-screen flex items-center overflow-hidden">
+        {/* Hero Slider */}
+        <section className="relative h-screen flex items-center overflow-hidden bg-slate-950">
           <div className="absolute inset-0 z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop" 
-              alt="AXA Casablanca" 
-              className="w-full h-full object-cover"
-              referrerPolicy="no-referrer"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-axa-blue/90 via-axa-blue/60 to-transparent"></div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentSlide}
+                initial={{ opacity: 0, scale: 1.05 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 1 }}
+                className="absolute inset-0"
+              >
+                <img 
+                  src={slides[currentSlide].image} 
+                  alt="Assurances ELOMRANI" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-axa-blue/95 via-axa-blue/60 to-transparent"></div>
+              </motion.div>
+            </AnimatePresence>
           </div>
           <div className="relative z-10 max-w-7xl mx-auto px-6 w-full">
             <div className="max-w-2xl">
-              <motion.div 
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2 }}
-                className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-white text-xs font-bold mb-6 uppercase tracking-widest"
-              >
-                <ShieldCheck className="text-axa-red w-4 h-4" />
-                Votre partenaire de confiance à Casablanca
-              </motion.div>
-              <h1 className="text-4xl md:text-7xl font-extrabold text-white leading-tight mb-6">
-                Votre assurance, <br /><span className="text-white/80">notre engagement.</span>
-              </h1>
-              <p className="text-lg md:text-xl text-white/90 mb-10 font-medium leading-relaxed">
-                Protégez ce qui compte vraiment pour vous avec l'expertise d'un agent général AXA dédié.
-              </p>
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={`slide-content-${currentSlide}`}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -15 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2 rounded-full text-white text-xs font-bold mb-6 uppercase tracking-widest">
+                    <ShieldCheck className="text-axa-red w-4 h-4" />
+                    {slides[currentSlide].tagline}
+                  </div>
+                  <h1 className="text-4xl md:text-6xl font-extrabold text-white leading-tight mb-6">
+                    {slides[currentSlide].title}
+                  </h1>
+                  <p className="text-base md:text-lg text-white/95 mb-10 font-medium leading-relaxed">
+                    {slides[currentSlide].description}
+                  </p>
+                </motion.div>
+              </AnimatePresence>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button 
                   onClick={navigateToContact}
-                  className="bg-axa-red text-white px-8 py-4 rounded-sm font-bold text-lg flex items-center justify-center gap-2 hover:bg-red-700 transition-all shadow-xl"
+                  className="bg-axa-red text-white px-8 py-4 rounded-sm font-bold text-lg flex items-center justify-center gap-2 hover:bg-red-700 transition-all shadow-xl cursor-pointer"
                 >
                   Obtenir un devis gratuit <ArrowRight />
                 </button>
@@ -84,6 +138,38 @@ const App: React.FC = () => {
                   <Phone /> Être rappelé
                 </a>
               </div>
+            </div>
+          </div>
+
+          {/* Slider controls */}
+          <div className="absolute bottom-10 left-6 md:left-12 z-25 flex items-center gap-4">
+            <button 
+              onClick={handlePrevSlide}
+              className="w-10 h-10 border border-white/30 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all cursor-pointer"
+              aria-label="Diapositive précédente"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button 
+              onClick={handleNextSlide}
+              className="w-10 h-10 border border-white/30 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all cursor-pointer"
+              aria-label="Diapositive suivante"
+            >
+              <ChevronRight size={20} />
+            </button>
+            
+            {/* Dots */}
+            <div className="flex items-center gap-2 ml-4">
+              {slides.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setCurrentSlide(idx)}
+                  className={`w-2.5 h-2.5 rounded-full transition-all cursor-pointer ${
+                    currentSlide === idx ? 'bg-white w-6' : 'bg-white/40'
+                  }`}
+                  aria-label={`Aller à la diapositive ${idx + 1}`}
+                />
+              ))}
             </div>
           </div>
         </section>
