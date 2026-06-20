@@ -193,7 +193,7 @@ const App: React.FC = () => {
               <span className="text-axa-red font-bold uppercase tracking-widest text-sm mb-4 block">L'expertise à votre service</span>
               <h2 className="text-3xl md:text-4xl font-extrabold text-axa-blue mb-6">
                 Mme. FATIMA EL OMRANI <br />
-                <span className="text-slate-500 text-xl md:text-2xl font-semibold">Agent Général AXA</span>
+                         <span className="text-slate-500 text-xl md:text-2xl font-semibold">Voyager l'état d'esprit tranquille.</span>
               </h2>
               <p className="text-lg text-slate-600 mb-8 leading-relaxed">
                 Avec plus de 15 ans d'expérience dans le secteur des assurances à Casablanca, notre agence s'engage à vous offrir un conseil personnalisé et une réactivité exemplaire.
