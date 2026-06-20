@@ -571,7 +571,7 @@ const App: React.FC = () => {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 py-4 md:py-6 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-3 md:py-4' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center relative">
           <button onClick={() => setActiveSection('home')} className="flex items-center gap-2 md:gap-3 group">
-            <div className="relative">
+            <div className="relative flex items-center justify-center bg-white p-1 md:p-1.5 rounded-lg shadow-md border border-slate-200/50 transition-all duration-300 group-hover:scale-105">">
               <img 
                 src="ae-logo.svg" 
                 alt="Assurances ELOMRANI" 
