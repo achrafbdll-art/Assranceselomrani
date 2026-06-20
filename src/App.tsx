@@ -6,13 +6,14 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Chatbot from './components/Chatbot';
-import SimulationForm from './components/SimulationForm';
 
 const App: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<'home' | 'history' | 'simulation'>('home');
+  const [activeSection, setActiveSection] = useState<'home' | 'history' | 'offers'>('home');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
+  const [isFormSubmitted, setIsFormSubmitted] = useState(false);
+  const [submittingPhone, setSubmittingPhone] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -156,8 +157,8 @@ const App: React.FC = () => {
                 <h3 className="text-xl font-bold text-axa-blue mb-3">{service.title}</h3>
                 <p className="text-slate-500 mb-6">{service.desc}</p>
                 <button 
-                  onClick={() => setActiveSection('simulation')}
-                  className="text-axa-red font-bold flex items-center gap-2 text-sm uppercase"
+                  onClick={() => setActiveSection('offers')}
+                  className="text-axa-red font-bold flex items-center gap-2 text-sm uppercase cursor-pointer"
                 >
                   Découvrir l'offre <ChevronRight size={16} />
                 </button>
@@ -236,64 +237,103 @@ const App: React.FC = () => {
               </div>
             </div>
             <div className="lg:col-span-3">
-              <form 
-                className="bg-white p-8 rounded-2xl shadow-2xl space-y-6" 
-                onSubmit={async (e) => { 
-                  e.preventDefault(); 
-                  const formData = new FormData(e.currentTarget);
-                  const data = {
-                    name: formData.get('name'),
-                    phone: formData.get('phone'),
-                    type: formData.get('type'),
-                    message: formData.get('message')
-                  };
-                  
-                  try {
-                    const response = await fetch('/api/contact', {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify(data)
-                    });
-                    const result = await response.json();
-                    if (result.success) {
-                      alert('Merci ! Votre demande a été envoyée.');
-                      (e.target as HTMLFormElement).reset();
-                    } else {
-                      alert('Erreur lors de l\'envoi.');
-                    }
-                  } catch (error) {
-                    alert('Erreur réseau.');
-                  }
-                }}
-              >
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-axa-blue uppercase tracking-wider">Nom Complet</label>
-                    <input name="name" type="text" placeholder="Votre nom" className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-axa-blue transition-all" required />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-axa-blue uppercase tracking-wider">Téléphone</label>
-                    <input name="phone" type="tel" placeholder="Votre numéro" className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-axa-blue transition-all" required />
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-axa-blue uppercase tracking-wider">Type d'assurance</label>
-                  <select name="type" className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-axa-blue transition-all bg-white">
-                    <option value="Automobile">Automobile</option>
-                    <option value="Habitation">Habitation</option>
-                    <option value="Santé">Santé</option>
-                    <option value="Professionnelle">Professionnelle</option>
-                    <option value="Autre">Autre</option>
-                  </select>
-                </div>
-                <div className="space-y-2">
-                  <label className="text-sm font-bold text-axa-blue uppercase tracking-wider">Message (Optionnel)</label>
-                  <textarea name="message" rows={4} placeholder="Comment pouvons-nous vous aider ?" className="w-full px-4 py-3 rounded-lg border border-slate-200 outline-none focus:border-axa-blue transition-all"></textarea>
-                </div>
-                <button type="submit" className="w-full bg-axa-red text-white py-4 rounded-lg font-bold text-lg hover:bg-red-700 transition-all shadow-xl shadow-red-500/20">
-                  Envoyer ma demande
-                </button>
-              </form>
+              <div className="bg-white p-8 md:p-10 rounded-2xl shadow-2xl border border-slate-100 relative overflow-hidden">
+                {isFormSubmitted ? (
+                  <motion.div 
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="py-12 text-center space-y-6"
+                  >
+                    <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto shadow-inner">
+                      <CheckCircle2 size={36} />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-axa-blue">Demande Enregistrée !</h3>
+                      <p className="text-slate-500 mt-2">Mme ELOMRANI ou un de nos conseillers vous rappellera d'ici quelques minutes.</p>
+                    </div>
+                    <button 
+                      onClick={() => setIsFormSubmitted(false)}
+                      className="text-axa-blue font-bold text-sm underline hover:text-blue-900"
+                    >
+                      Introduire un autre numéro
+                    </button>
+                  </motion.div>
+                ) : (
+                  <form 
+                    className="space-y-6" 
+                    onSubmit={async (e) => { 
+                      e.preventDefault(); 
+                      setSubmittingPhone(true);
+                      const formData = new FormData(e.currentTarget);
+                      const rawPhone = formData.get('phone');
+                      const data = {
+                        name: "Client Mobile",
+                        phone: rawPhone,
+                        type: "Rappel Téléphonique",
+                        message: "Demande de rappel rapide depuis le widget de contact direct"
+                      };
+                      
+                      try {
+                        const response = await fetch('/api/contact', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify(data)
+                        });
+                        const result = await response.json();
+                        if (result.success) {
+                          setIsFormSubmitted(true);
+                          (e.target as HTMLFormElement).reset();
+                        } else {
+                          alert(result.message || 'Erreur lors de l\'envoi.');
+                        }
+                      } catch (error) {
+                        alert('Erreur réseau.');
+                      } finally {
+                        setSubmittingPhone(false);
+                      }
+                    }}
+                  >
+                    <div className="space-y-2">
+                      <span className="text-axa-red font-bold uppercase tracking-wider text-xs block">Rappel Immédiat & Gratuit</span>
+                      <h3 className="text-2xl font-bold text-axa-blue">Entrez votre numéro de mobile</h3>
+                      <p className="text-slate-500 text-sm">Pas de formulaires à rallonge. Nous vous contactons directement par téléphone pour étudier vos besoins.</p>
+                    </div>
+
+                    <div className="space-y-3">
+                      <label className="text-xs font-bold text-axa-blue uppercase tracking-wider block">Numéro de Mobile</label>
+                      <div className="relative">
+                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm select-none border-r border-slate-200 pr-3">+212</span>
+                        <input 
+                          name="phone" 
+                          type="tel" 
+                          placeholder="6 12 34 56 78" 
+                          className="w-full pl-22 pr-4 py-4 rounded-xl border border-slate-200 outline-none focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-bold text-slate-700 tracking-wide text-lg" 
+                          required 
+                        />
+                      </div>
+                      <p className="text-xs text-slate-400">Exemple: 6 12 34 56 78 ou 7 12 34 56 78</p>
+                    </div>
+
+                    <button 
+                      type="submit" 
+                      disabled={submittingPhone}
+                      className="w-full bg-axa-red text-white py-4.5 rounded-xl font-bold text-lg hover:bg-red-700 transition-all shadow-xl shadow-red-500/20 flex items-center justify-center gap-3 disabled:opacity-50 cursor-pointer"
+                    >
+                      {submittingPhone ? (
+                        <>
+                          <Loader2 className="animate-spin" size={20} />
+                          Envoi en cours...
+                        </>
+                      ) : (
+                        <>
+                          <Phone size={20} />
+                          Demander à être rappelé
+                        </>
+                      )}
+                    </button>
+                  </form>
+                )}
+              </div>
             </div>
           </div>
         </section>
@@ -360,7 +400,7 @@ const App: React.FC = () => {
         </div>
       </motion.div>
     ),
-    simulation: (
+    offers: (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -372,11 +412,6 @@ const App: React.FC = () => {
             <span className="text-axa-red font-bold uppercase tracking-widest text-sm mb-4 block">Nos Offres</span>
             <h1 className="text-4xl md:text-5xl font-extrabold text-axa-blue mb-6">Des solutions de protection adaptées à vos besoins</h1>
             <p className="text-slate-600 max-w-2xl mx-auto text-lg">Découvrez nos offres exclusives conçues pour vous offrir la meilleure couverture au meilleur prix.</p>
-          </div>
-          
-          {/* Simulation Tool */}
-          <div className="mb-20">
-            <SimulationForm />
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -468,7 +503,7 @@ const App: React.FC = () => {
           <div className="hidden md:flex items-center gap-8">
             <button onClick={() => setActiveSection('home')} className={`font-semibold text-sm transition-colors hover:text-axa-red ${isScrolled ? 'text-axa-blue' : 'text-white'}`}>Accueil</button>
             <button onClick={() => setActiveSection('history')} className={`font-semibold text-sm transition-colors hover:text-axa-red ${isScrolled ? 'text-axa-blue' : 'text-white'}`}>Historique</button>
-            <button onClick={() => setActiveSection('simulation')} className={`font-semibold text-sm transition-colors hover:text-axa-red ${isScrolled ? 'text-axa-blue' : 'text-white'}`}>Offres</button>
+            <button onClick={() => setActiveSection('offers')} className={`font-semibold text-sm transition-colors hover:text-axa-red ${isScrolled ? 'text-axa-blue' : 'text-white'} cursor-pointer`}>Offres</button>
             <button onClick={navigateToContact} className="bg-axa-red text-white px-6 py-2.5 rounded-sm font-bold text-sm hover:bg-red-700 transition-all shadow-lg">CONTACTER NOUS</button>
           </div>
 
@@ -498,8 +533,8 @@ const App: React.FC = () => {
           <span className="text-[10px] font-bold uppercase">Histoire</span>
         </button>
         <button 
-          onClick={() => setActiveSection('simulation')} 
-          className={`flex flex-col items-center gap-1 transition-colors ${activeSection === 'simulation' ? 'text-axa-blue' : 'text-slate-400'}`}
+          onClick={() => setActiveSection('offers')} 
+          className={`flex flex-col items-center gap-1 transition-colors ${activeSection === 'offers' ? 'text-axa-blue' : 'text-slate-400'} cursor-pointer`}
         >
           <Car size={20} />
           <span className="text-[10px] font-bold uppercase">Offres</span>
@@ -557,7 +592,7 @@ const App: React.FC = () => {
             <ul className="space-y-4 text-white/60">
               <li><button onClick={() => setActiveSection('home')} className="hover:text-white transition-all">Accueil</button></li>
               <li><button onClick={() => setActiveSection('history')} className="hover:text-white transition-all">Notre Histoire</button></li>
-              <li><button onClick={() => setActiveSection('simulation')} className="hover:text-white transition-all">Offres</button></li>
+              <li><button onClick={() => setActiveSection('offers')} className="hover:text-white transition-all cursor-pointer">Offres</button></li>
             </ul>
           </div>
           <div>

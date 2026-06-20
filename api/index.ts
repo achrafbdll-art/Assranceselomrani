@@ -140,13 +140,18 @@ function getAI(): GoogleGenAI {
 // REST API Endpoints
 app.post("/api/contact", (req, res) => {
   const { name, phone, type, message } = req.body;
-  if (!name || !phone || !type) {
-    return res.status(400).json({ success: false, message: "Nom, téléphone et type d'assurance requis." });
+  if (!phone) {
+    return res.status(400).json({ success: false, message: "Numéro de téléphone mobile requis." });
   }
 
   try {
-    const contact = dbProvider.insertContact({ name, phone, type, message });
-    res.json({ success: true, message: "Demande envoyée avec succès !", data: contact });
+    const contact = dbProvider.insertContact({
+      name: name || "Client Mobile",
+      phone: phone,
+      type: type || "Rappel Direct",
+      message: message || "Demande de rappel rapide"
+    });
+    res.json({ success: true, message: "Votre demande de rappel a bien été enregistrée !", data: contact });
   } catch (error) {
     console.error("Failed to insert contact:", error);
     res.status(500).json({ success: false, message: "Erreur lors de l'enregistrement de la demande." });
