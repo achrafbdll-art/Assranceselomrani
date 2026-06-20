@@ -31,8 +31,9 @@ class DbProvider {
       : path.join(process.cwd(), "insurance-contacts.json");
 
     try {
-      // Dynamic import to handle environments where better-sqlite3 cannot compile
-      const Database = require("better-sqlite3");
+      // Dynamic import to handle environments where better-sqlite3 cannot compile or isn't needed
+      const sqliteName = "better-sqlite3";
+      const Database = require(sqliteName);
       const dbPath = process.env.NODE_ENV === "production" ? "/tmp/insurance.db" : "insurance.db";
       this.sqliteDb = new Database(dbPath);
       this.sqliteDb.exec(`
