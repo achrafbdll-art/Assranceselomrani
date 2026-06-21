@@ -609,7 +609,7 @@ const App: React.FC = () => {
                 className="h-8 md:h-14 w-auto" 
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute -bottom-4 left-0 text-[8px] font-black text-axa-blue opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block">NOW YOU CAN</div>
+              <div className="absolute -bottom-4 left-0 text-[8px] font-black text-axa-blue opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block"></div>
             </div>
             <div className={`flex flex-col leading-none text-left transition-colors ${isScrolled ? 'text-axa-blue' : 'text-white'}`}>
               <span className="font-bold text-sm md:text-lg uppercase tracking-wider">Assurances ELOMRANI</span>
@@ -679,7 +679,7 @@ const App: React.FC = () => {
             <div className="flex items-center gap-3 mb-8">
               <div className="relative group">
                 <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/1200px-AXA_Logo.svg.png" 
+                  src="Capture d’écran 2026-06-21 203107.jpg" 
                   alt="Assurances ELOMRANI" 
                   className="h-12 w-auto" 
                   referrerPolicy="no-referrer"
