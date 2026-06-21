@@ -81,7 +81,7 @@ const WhatsAppWidget: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-bold text-base leading-tight">Assurances ELOMRANI</h4>
-                  <p className="text-xs text-emerald-100 mt-0.5">En ligne • Support AXA</p>
+                  <p className="text-xs text-emerald-100 mt-0.5">En ligne</p>
                 </div>
               </div>
             </div>

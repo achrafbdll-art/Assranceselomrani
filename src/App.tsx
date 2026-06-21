@@ -684,7 +684,6 @@ const App: React.FC = () => {
                   className="h-12 w-auto" 
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute -bottom-4 left-0 text-[8px] font-black text-white opacity-60 whitespace-nowrap uppercase tracking-tighter">NOW YOU CAN</div>
               </div>
               <div className="flex flex-col leading-none">
                 <span className="font-bold text-lg uppercase tracking-wider">Assurances ELOMRANI</span>
