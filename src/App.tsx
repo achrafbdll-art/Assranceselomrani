@@ -604,7 +604,7 @@ const App: React.FC = () => {
           <button onClick={() => setActiveSection('home')} className="flex items-center gap-2 md:gap-3 group">
             <div className="relative">
               <img 
-                src="ae-logo.svg.jpg" 
+                <img src="/ae-logo.svg.jpg" alt="Assurances ELOMRANI" />
                 alt="Assurances ELOMRANI" 
                 className="h-8 md:h-14 w-auto" 
                 referrerPolicy="no-referrer"
