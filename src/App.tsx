@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { 
+import logo from './ae-logo.jpg'
   ShieldCheck, ArrowRight, Phone, CheckCircle2, Car, Home, HeartPulse, 
   Briefcase, TrendingUp, Quote, MapPin, Mail, X, Menu, ChevronRight, ChevronLeft,
   Facebook, Instagram, Linkedin, Twitter, MessageCircle, Github, Globe, Send, Loader2
