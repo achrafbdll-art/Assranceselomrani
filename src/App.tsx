@@ -603,7 +603,7 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center relative">
           <button onClick={() => setActiveSection('home')} className="flex items-center gap-2 md:gap-3 group">
             <div className="relative">
-              <img 
+          
                 <img src="/ae-logo.jpg" alt="Assurances ELOMRANI" />
                
                 className="h-8 md:h-14 w-auto" 
