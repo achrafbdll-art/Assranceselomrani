@@ -702,12 +702,10 @@ ou sans l'import :
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-8">
               <div className="relative group">
-                <img 
-                  src="Capture d’écran 2026-06-21 203107.jpg" 
-                  alt="Assurances ELOMRANI" 
-                  className="h-12 w-auto" 
-                  referrerPolicy="no-referrer"
-                />
+                src={logo}
+  alt="Assurances ELOMRANI"
+  className="h-12 w-auto"
+/>
               </div>
               <div className="flex flex-col leading-none">
                 <span className="font-bold text-lg uppercase tracking-wider">Assurances ELOMRANI</span>
