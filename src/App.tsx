@@ -603,13 +603,13 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center relative">
           <button onClick={() => setActiveSection('home')} className="flex items-center gap-2 md:gap-3 group">
             <div className="relative">
-          
-             <img
-  src={logo}
-  alt="Assurances ELOMRANI"
-  className="h-8 md:h-14 w-auto"
-  referrerPolicy="no-referrer"
-/>
+  <img
+    src={logo}
+    alt="Assurances ELOMRANI"
+    className="h-8 md:h-14 w-auto"
+    referrerPolicy="no-referrer"
+  />
+</div>
 
 ou sans l'import :
               <div className="absolute -bottom-4 left-0 text-[8px] font-black text-axa-blue opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block"></div>
