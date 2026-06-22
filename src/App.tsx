@@ -630,7 +630,7 @@ const App: React.FC = () => {
   />
 </div>
 
-ou sans l'import :
+
               <div className="absolute -bottom-4 left-0 text-[8px] font-black text-axa-blue opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block"></div>
             </div>
             <div className={`flex flex-col leading-none text-left transition-colors ${isScrolled ? 'text-axa-blue' : 'text-white'}`}>
@@ -700,9 +700,11 @@ ou sans l'import :
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-8">
               <div className="relative group">
-                src={logo}
+            <img
+  src={logo}
   alt="Assurances ELOMRANI"
   className="h-12 w-auto"
+  referrerPolicy="no-referrer"
 />
               </div>
               <div className="flex flex-col leading-none">
