@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
-<img
-  src="/ae-logo.jpg"
-  alt="Assurances ELOMRANI"
-  className="h-8 md:h-14 w-auto"
-/>
+import logo from '/ae-logo.jpg';
 import {
   ShieldCheck,
   ArrowRight,
