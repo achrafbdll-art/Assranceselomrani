@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import logo from './ae-logo.jpg'
-import React, { useState, useEffect } from 'react';
 import logo from './ae-logo.jpg';
 
 import {
