@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logo from '/ae-logo.jpg';
+import {
   ShieldCheck,
   ArrowRight,
   Phone,
@@ -20,6 +21,7 @@ import logo from '/ae-logo.jpg';
   Linkedin,
   MessageCircle,
   Loader2
+} from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Chatbot from './components/Chatbot';
 import WhatsAppWidget from './components/WhatsAppWidget';
@@ -27,7 +29,6 @@ import WhatsAppWidget from './components/WhatsAppWidget';
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<'home' | 'history' | 'offers'>('home');
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showPopup, setShowPopup] = useState(false);
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [submittingPhone, setSubmittingPhone] = useState(false);
@@ -46,7 +47,7 @@ const App: React.FC = () => {
       image: "https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop",
       tagline: "Assurance Automobile AXA",
       title: "Prenez la route en toute sérénité.",
-      description: "Garanties d'assistance exceptionnelles 24/7 and formules flexibles pour rouler l'esprit tranquille."
+      description: "Garanties d'assistance exceptionnelles 24/7 et formules flexibles pour rouler l'esprit tranquille."
     },
     {
       image: "https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=2069&auto=format&fit=crop",
@@ -62,7 +63,6 @@ const App: React.FC = () => {
     };
     window.addEventListener('scroll', handleScroll);
 
-    // Auto-trigger the special offer popup after 5 seconds to maximize conversion
     const timer = setTimeout(() => {
       const hasClosed = sessionStorage.getItem('popup_closed');
       const hasSubmitted = sessionStorage.getItem('popup_submitted');
@@ -77,7 +77,6 @@ const App: React.FC = () => {
     };
   }, []);
 
-  // Slideshow automatic rotation effect
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length);
@@ -121,11 +120,12 @@ const App: React.FC = () => {
                 transition={{ duration: 1 }}
                 className="absolute inset-0"
               >
-               <img
-  src="/ae-logo.jpg"
-  alt="Assurances ELOMRANI"
-  className="h-8 md:h-14 w-auto"
-/>
+                <img
+                  src={slides[currentSlide].image}
+                  alt="Assurances ELOMRANI"
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
                 <div className="absolute inset-0 bg-gradient-to-r from-axa-blue/95 via-axa-blue/60 to-transparent"></div>
               </motion.div>
             </AnimatePresence>
@@ -153,14 +153,14 @@ const App: React.FC = () => {
                 </motion.div>
               </AnimatePresence>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button 
+                <button
                   onClick={() => setShowPopup(true)}
                   className="bg-axa-red text-white px-8 py-4 rounded-sm font-bold text-lg flex items-center justify-center gap-2 hover:bg-red-700 transition-all shadow-xl cursor-pointer"
                 >
                   Obtenir un devis gratuit <ArrowRight />
                 </button>
-                <a 
-                  href="tel:0522665908" 
+                <a
+                  href="tel:0522665908"
                   className="bg-white text-axa-blue px-8 py-4 rounded-sm font-bold text-lg flex items-center justify-center gap-2 hover:bg-slate-100 transition-all shadow-xl"
                 >
                   <Phone /> Être rappelé
@@ -171,22 +171,20 @@ const App: React.FC = () => {
 
           {/* Slider controls */}
           <div className="absolute bottom-10 left-6 md:left-12 z-25 flex items-center gap-4">
-            <button 
+            <button
               onClick={handlePrevSlide}
               className="w-10 h-10 border border-white/30 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all cursor-pointer"
               aria-label="Diapositive précédente"
             >
               <ChevronLeft size={20} />
             </button>
-            <button 
+            <button
               onClick={handleNextSlide}
               className="w-10 h-10 border border-white/30 rounded-full bg-white/10 hover:bg-white/25 text-white flex items-center justify-center transition-all cursor-pointer"
               aria-label="Diapositive suivante"
             >
               <ChevronRight size={20} />
             </button>
-            
-            {/* Dots */}
             <div className="flex items-center gap-2 ml-4">
               {slides.map((_, idx) => (
                 <button
@@ -207,9 +205,9 @@ const App: React.FC = () => {
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
             <div className="relative">
               <div className="aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl relative z-10 bg-slate-100">
-                <img 
-                  src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop" 
-                  alt="Assurance Voyage - Vol Avion" 
+                <img
+                  src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop"
+                  alt="Assurance Voyage - Vol Avion"
                   className="w-full h-full object-cover object-center"
                   referrerPolicy="no-referrer"
                 />
@@ -237,7 +235,7 @@ const App: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <button 
+              <button
                 onClick={() => setShowPopup(true)}
                 className="bg-axa-blue text-white px-8 py-3 rounded-sm font-bold hover:bg-blue-950 transition-all cursor-pointer"
               >
@@ -268,7 +266,7 @@ const App: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-bold text-axa-blue mb-3">{service.title}</h3>
                 <p className="text-slate-500 mb-6">{service.desc}</p>
-                <button 
+                <button
                   onClick={() => setActiveSection('offers')}
                   className="text-axa-red font-bold flex items-center gap-2 text-sm uppercase cursor-pointer"
                 >
@@ -346,10 +344,10 @@ const App: React.FC = () => {
                     <p className="text-slate-500 text-sm">contact@axa-elomrani.ma</p>
                   </div>
                 </div>
-                <a 
-                  href="https://wa.me/212522665908" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://wa.me/212522665908"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-start gap-4 p-4 bg-emerald-50/50 rounded-2xl hover:bg-emerald-50 border border-emerald-100 hover:border-emerald-300 transition-all cursor-pointer group"
                 >
                   <div className="w-12 h-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform duration-300">
@@ -357,7 +355,7 @@ const App: React.FC = () => {
                   </div>
                   <div>
                     <p className="font-bold text-emerald-700 flex items-center gap-2">
-                      WhatsApp 
+                      WhatsApp
                       <span className="inline-flex items-center gap-1 text-[10px] bg-emerald-500 text-white font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
                         <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
                         Direct
@@ -371,7 +369,7 @@ const App: React.FC = () => {
             <div className="lg:col-span-3">
               <div className="bg-white p-8 md:p-10 rounded-2xl shadow-2xl border border-slate-100 relative overflow-hidden">
                 {isFormSubmitted ? (
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     className="py-12 text-center space-y-6"
@@ -383,7 +381,7 @@ const App: React.FC = () => {
                       <h3 className="text-2xl font-bold text-axa-blue">Demande Enregistrée !</h3>
                       <p className="text-slate-500 mt-2">Mme ELOMRANI ou un de nos conseillers vous rappellera d'ici quelques minutes.</p>
                     </div>
-                    <button 
+                    <button
                       onClick={() => setIsFormSubmitted(false)}
                       className="text-axa-blue font-bold text-sm underline hover:text-blue-900"
                     >
@@ -391,10 +389,10 @@ const App: React.FC = () => {
                     </button>
                   </motion.div>
                 ) : (
-                  <form 
-                    className="space-y-6" 
-                    onSubmit={async (e) => { 
-                      e.preventDefault(); 
+                  <form
+                    className="space-y-6"
+                    onSubmit={async (e) => {
+                      e.preventDefault();
                       setSubmittingPhone(true);
                       const formData = new FormData(e.currentTarget);
                       const rawPhone = formData.get('phone');
@@ -404,7 +402,6 @@ const App: React.FC = () => {
                         type: "Rappel Téléphonique",
                         message: "Demande de rappel rapide depuis le widget de contact direct"
                       };
-                      
                       try {
                         const response = await fetch('/api/contact', {
                           method: 'POST',
@@ -430,26 +427,24 @@ const App: React.FC = () => {
                       <h3 className="text-2xl font-bold text-axa-blue">Entrez votre numéro de mobile</h3>
                       <p className="text-slate-500 text-sm">Pas de formulaires à rallonge. Nous vous contactons directement par téléphone pour étudier vos besoins.</p>
                     </div>
-
                     <div className="space-y-3">
                       <label className="text-xs font-bold text-axa-blue uppercase tracking-wider block">Numéro de Mobile</label>
                       <div className="relative">
                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm select-none border-r border-slate-200 pr-3">+212</span>
-                        <input 
-                          name="phone" 
-                          type="tel" 
-                          placeholder="6 12 34 56 78" 
-                          className="w-full pl-22 pr-4 py-4 rounded-xl border border-slate-200 outline-none focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-bold text-slate-700 tracking-wide text-lg" 
-                          required 
+                        <input
+                          name="phone"
+                          type="tel"
+                          placeholder="6 12 34 56 78"
+                          className="w-full pl-22 pr-4 py-4 rounded-xl border border-slate-200 outline-none focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-bold text-slate-700 tracking-wide text-lg"
+                          required
                         />
                       </div>
                       <p className="text-xs text-slate-400">Exemple: 6 12 34 56 78 ou 7 12 34 56 78</p>
                     </div>
-
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       disabled={submittingPhone}
-                      className="w-full bg-axa-red text-white py-4.5 rounded-xl font-bold text-lg hover:bg-red-700 transition-all shadow-xl shadow-red-500/20 flex items-center justify-center gap-3 disabled:opacity-50 cursor-pointer"
+                      className="w-full bg-axa-red text-white py-4 rounded-xl font-bold text-lg hover:bg-red-700 transition-all shadow-xl shadow-red-500/20 flex items-center justify-center gap-3 disabled:opacity-50 cursor-pointer"
                     >
                       {submittingPhone ? (
                         <>
@@ -472,13 +467,13 @@ const App: React.FC = () => {
 
         {/* Map Section */}
         <section className="h-[450px] w-full bg-slate-200 grayscale hover:grayscale-0 transition-all duration-700">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.823932782782!2d-7.5435208!3d33.5976608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd00315039a9%3A0xbd3f59f03e9d1a66!2sAssurances%20ELOMRANI!5e0!3m2!1sfr!2sma!4v1710000000000!5m2!1sfr!2sma" 
-            width="100%" 
-            height="100%" 
-            style={{ border: 0 }} 
-            allowFullScreen={true} 
-            loading="lazy" 
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.823932782782!2d-7.5435208!3d33.5976608!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd00315039a9%3A0xbd3f59f03e9d1a66!2sAssurances%20ELOMRANI!5e0!3m2!1sfr!2sma!4v1710000000000!5m2!1sfr!2sma"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen={true}
+            loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           ></iframe>
         </section>
@@ -497,7 +492,6 @@ const App: React.FC = () => {
             <h1 className="text-4xl md:text-5xl font-extrabold text-axa-blue mb-6">Plus de deux siècles d'engagement et d'innovation</h1>
             <p className="text-slate-600 max-w-2xl mx-auto text-lg">Découvrez les jalons qui ont façonné le leader mondial de l'assurance.</p>
           </div>
-          
           <div className="grid md:grid-cols-4 gap-8 mb-20 text-center">
             {[
               { val: "50+", label: "Pays", color: "axa-blue" },
@@ -511,10 +505,8 @@ const App: React.FC = () => {
               </div>
             ))}
           </div>
-
           <div className="space-y-12 max-w-4xl mx-auto relative">
             <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-slate-100 -translate-x-1/2 hidden md:block"></div>
-            
             {[
               { year: "1817", title: "Les Origines", desc: "Création de la Mutuelle de L'assurance contre l'incendie à Rouen, point de départ de l'aventure AXA.", color: "axa-red" },
               { year: "1985", title: "Naissance de la marque AXA", desc: "Claude Bébéar choisit le nom AXA, un nom court, puissant et universel pour porter l'ambition internationale du groupe.", color: "axa-blue" },
@@ -545,24 +537,23 @@ const App: React.FC = () => {
             <h1 className="text-4xl md:text-5xl font-extrabold text-axa-blue mb-6">Des solutions de protection adaptées à vos besoins</h1>
             <p className="text-slate-600 max-w-2xl mx-auto text-lg">Découvrez nos offres exclusives conçues pour vous offrir la meilleure couverture au meilleur prix.</p>
           </div>
-
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { 
-                title: "Pack Auto", 
+              {
+                title: "Pack Auto",
                 img: "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80&w=2070&auto=format&fit=crop",
                 icon: Car,
                 features: ["Assistance 24h/24 et 7j/7", "Véhicule de remplacement", "Protection juridique incluse", "Bonus fidélité exclusif"],
                 badge: "Populaire"
               },
-              { 
-                title: "Pack Home", 
+              {
+                title: "Pack Home",
                 img: "https://images.unsplash.com/photo-1513584684374-8bab748fbf90?q=80&w=2065&auto=format&fit=crop",
                 icon: Home,
                 features: ["Couverture multirisque totale", "Dépannage d'urgence 2h", "Protection des objets de valeur", "Responsabilité civile famille"]
               },
-              { 
-                title: "Pack Santé", 
+              {
+                title: "Pack Santé",
                 img: "https://images.unsplash.com/photo-1576091160550-2173dba999ef?q=80&w=2070&auto=format&fit=crop",
                 icon: HeartPulse,
                 features: ["Remboursement rapide sous 48h", "Tiers payant étendu au Maroc", "Accès réseau clinique AXA", "Téléconsultation gratuite"],
@@ -599,7 +590,6 @@ const App: React.FC = () => {
               </div>
             ))}
           </div>
-
           <div className="mt-20 bg-axa-blue rounded-3xl p-12 text-center text-white relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
             <h2 className="text-3xl font-bold mb-6 relative z-10">Vous ne trouvez pas ce que vous cherchez ?</h2>
@@ -615,25 +605,13 @@ const App: React.FC = () => {
     <div className="font-sans text-slate-900 bg-white selection:bg-axa-blue selection:text-white min-h-screen flex flex-col">
       {/* Navbar */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 py-4 md:py-6 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-3 md:py-4' : 'bg-transparent'}`}>
-        <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center relative">
-      <button onClick={() => setActiveSection('home')} className="flex items-center gap-2 md:gap-3 group">
-  <div className="relative">
-    <img
-      src={logo}
-      alt="Assurances ELOMRANI"
-      className="h-8 md:h-14 w-auto"
-    />
-    <div className="absolute -bottom-4 left-0 text-[8px] font-black text-axa-blue opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block"></div>
-  </div>
-  <div className={`flex flex-col leading-none text-left transition-colors ${isScrolled ? 'text-axa-blue' : 'text-white'}`}>
-    <span className="font-bold text-sm md:text-lg uppercase tracking-wider">Assurances ELOMRANI</span>
-    <span className="text-[7px] md:text-[10px] font-medium opacity-80 uppercase">AGENT GÉNÉRALE</span>
-  </div>
-</button>
-
-
-              <div className="absolute -bottom-4 left-0 text-[8px] font-black text-axa-blue opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block"></div>
-            </div>
+        <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center">
+          <button onClick={() => setActiveSection('home')} className="flex items-center gap-2 md:gap-3 group">
+            <img
+              src={logo}
+              alt="Assurances ELOMRANI"
+              className="h-8 md:h-14 w-auto"
+            />
             <div className={`flex flex-col leading-none text-left transition-colors ${isScrolled ? 'text-axa-blue' : 'text-white'}`}>
               <span className="font-bold text-sm md:text-lg uppercase tracking-wider">Assurances ELOMRANI</span>
               <span className="text-[7px] md:text-[10px] font-medium opacity-80 uppercase">AGENT GÉNÉRALE</span>
@@ -647,41 +625,40 @@ const App: React.FC = () => {
             <button onClick={navigateToContact} className="bg-axa-red text-white px-6 py-2.5 rounded-sm font-bold text-sm hover:bg-red-700 transition-all shadow-lg">CONTACTER NOUS</button>
           </div>
 
-          {/* Desktop only menu button if needed, otherwise hidden on mobile in favor of bottom nav */}
           <div className="md:hidden flex items-center gap-4">
-             <a href="tel:0522665908" className={`p-2 rounded-full ${isScrolled ? 'bg-axa-blue text-white' : 'bg-white text-axa-blue'}`}>
-                <Phone size={18} />
-             </a>
+            <a href="tel:0522665908" className={`p-2 rounded-full ${isScrolled ? 'bg-axa-blue text-white' : 'bg-white text-axa-blue'}`}>
+              <Phone size={18} />
+            </a>
           </div>
         </div>
       </nav>
 
       {/* Mobile Bottom Taskbar */}
       <div className="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-slate-100 z-[90] px-6 py-3 flex justify-between items-center shadow-[0_-10px_30px_-15px_rgba(0,0,0,0.1)]">
-        <button 
-          onClick={() => setActiveSection('home')} 
+        <button
+          onClick={() => setActiveSection('home')}
           className={`flex flex-col items-center gap-1 transition-colors ${activeSection === 'home' ? 'text-axa-blue' : 'text-slate-400'}`}
         >
           <Home size={20} />
           <span className="text-[10px] font-bold uppercase">Accueil</span>
         </button>
-        <button 
-          onClick={() => setActiveSection('history')} 
+        <button
+          onClick={() => setActiveSection('history')}
           className={`flex flex-col items-center gap-1 transition-colors ${activeSection === 'history' ? 'text-axa-blue' : 'text-slate-400'}`}
         >
           <ShieldCheck size={20} />
           <span className="text-[10px] font-bold uppercase">Historique d'AXA</span>
         </button>
-        <button 
-          onClick={() => setActiveSection('offers')} 
+        <button
+          onClick={() => setActiveSection('offers')}
           className={`flex flex-col items-center gap-1 transition-colors ${activeSection === 'offers' ? 'text-axa-blue' : 'text-slate-400'} cursor-pointer`}
         >
           <Car size={20} />
           <span className="text-[10px] font-bold uppercase">Offres</span>
         </button>
-        <button 
-          onClick={navigateToContact} 
-          className={`flex flex-col items-center gap-1 transition-colors ${activeSection === 'home' && window.scrollY > 2000 ? 'text-axa-blue' : 'text-slate-400'}`}
+        <button
+          onClick={navigateToContact}
+          className="flex flex-col items-center gap-1 transition-colors text-slate-400"
         >
           <Mail size={20} />
           <span className="text-[10px] font-bold uppercase">Contact</span>
@@ -700,14 +677,11 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 text-left">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-8">
-              <div className="relative group">
-            <img
-  src={logo}
-  alt="Assurances ELOMRANI"
-  className="h-12 w-auto"
-  referrerPolicy="no-referrer"
-/>
-              </div>
+              <img
+                src={logo}
+                alt="Assurances ELOMRANI"
+                className="h-12 w-auto"
+              />
               <div className="flex flex-col leading-none">
                 <span className="font-bold text-lg uppercase tracking-wider">Assurances ELOMRANI</span>
                 <span className="text-[10px] font-medium opacity-60 uppercase">AGENT GÉNÉRALE</span>
@@ -763,34 +737,34 @@ const App: React.FC = () => {
       <AnimatePresence>
         {showPopup && (
           <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-axa-blue/70 backdrop-blur-sm" 
+              className="absolute inset-0 bg-axa-blue/70 backdrop-blur-sm"
               onClick={() => {
                 sessionStorage.setItem('popup_closed', 'true');
                 setShowPopup(false);
               }}
             ></motion.div>
-            <motion.div 
+            <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               className="relative bg-white w-full max-w-lg rounded-3xl shadow-2xl overflow-hidden p-6 md:p-10 text-center zellig-pattern border border-slate-100 z-50"
             >
-              <button 
+              <button
                 onClick={() => {
                   sessionStorage.setItem('popup_closed', 'true');
                   setShowPopup(false);
-                }} 
+                }}
                 className="absolute top-6 right-6 text-slate-400 hover:text-axa-blue transition-all cursor-pointer"
               >
                 <X />
               </button>
-              
+
               {isPopupSubmitted ? (
-                <motion.div 
+                <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="py-6 space-y-6"
@@ -804,7 +778,7 @@ const App: React.FC = () => {
                       Merci ! Un conseiller d'Assurances ELOMRANI vous contactera sur votre mobile d'ici quelques minutes pour votre offre spéciale.
                     </p>
                   </div>
-                  <button 
+                  <button
                     onClick={() => {
                       sessionStorage.setItem('popup_submitted', 'true');
                       setShowPopup(false);
@@ -815,7 +789,7 @@ const App: React.FC = () => {
                   </button>
                 </motion.div>
               ) : (
-                <form 
+                <form
                   className="space-y-6"
                   onSubmit={async (e) => {
                     e.preventDefault();
@@ -828,7 +802,6 @@ const App: React.FC = () => {
                       type: "Offre Spéciale",
                       message: "Demande d'informations sur l'offre spéciale depuis la popup d'appel à l'action"
                     };
-
                     try {
                       const response = await fetch('/api/contact', {
                         method: 'POST',
@@ -859,23 +832,21 @@ const App: React.FC = () => {
                       Contactez-nous dès aujourd'hui pour en savoir plus sur votre offre spéciale.
                     </p>
                   </div>
-
                   <div className="space-y-2 text-left">
                     <label className="text-xs font-bold text-axa-blue uppercase tracking-wider block">Numéro de Mobile</label>
                     <div className="relative">
                       <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm select-none border-r border-slate-200 pr-3">+212</span>
-                      <input 
-                        name="phone" 
-                        type="tel" 
-                        placeholder="6 12 34 56 78" 
-                        className="w-full pl-22 pr-4 py-3.5 rounded-xl border border-slate-200 outline-none focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-bold text-slate-700 tracking-wide text-lg" 
-                        required 
+                      <input
+                        name="phone"
+                        type="tel"
+                        placeholder="6 12 34 56 78"
+                        className="w-full pl-22 pr-4 py-3.5 rounded-xl border border-slate-200 outline-none focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-bold text-slate-700 tracking-wide text-lg"
+                        required
                       />
                     </div>
                   </div>
-
-                  <button 
-                    type="submit" 
+                  <button
+                    type="submit"
                     disabled={submittingPopupPhone}
                     className="w-full bg-axa-red text-white py-4 rounded-xl font-bold text-base hover:bg-red-700 transition-all shadow-xl shadow-red-500/20 flex items-center justify-center gap-3 disabled:opacity-50 cursor-pointer"
                   >
@@ -891,11 +862,10 @@ const App: React.FC = () => {
                       </>
                     )}
                   </button>
-
                   <div className="pt-2 border-t border-slate-100">
                     <p className="text-xs text-slate-400 mb-2">Ou contactez notre agence directement :</p>
-                    <a 
-                      href="tel:0522665908" 
+                    <a
+                      href="tel:0522665908"
                       className="inline-flex items-center gap-2 text-axa-blue font-bold text-sm hover:underline"
                     >
                       <Phone size={14} /> 05 22 66 59 08
