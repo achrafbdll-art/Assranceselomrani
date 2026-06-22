@@ -20,7 +20,6 @@ import logo from '/ae-logo.jpg';
   Linkedin,
   MessageCircle,
   Loader2
-} from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Chatbot from './components/Chatbot';
 import WhatsAppWidget from './components/WhatsAppWidget';
