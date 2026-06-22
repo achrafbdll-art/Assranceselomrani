@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import logo from './ae-logo.jpg';
+import logo from 'src/ae-logo.jpg';
 
 import {
   ShieldCheck,
