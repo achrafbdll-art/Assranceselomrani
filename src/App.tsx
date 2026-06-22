@@ -1,8 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import logo from './ae-logo.jpg'
-  ShieldCheck, ArrowRight, Phone, CheckCircle2, Car, Home, HeartPulse, 
-  Briefcase, TrendingUp, Quote, MapPin, Mail, X, Menu, ChevronRight, ChevronLeft,
-  Facebook, Instagram, Linkedin, Twitter, MessageCircle, Github, Globe, Send, Loader2
+import React, { useState, useEffect } from 'react';
+import logo from './ae-logo.jpg';
+
+import {
+  ShieldCheck,
+  ArrowRight,
+  Phone,
+  CheckCircle2,
+  Car,
+  Home,
+  HeartPulse,
+  Briefcase,
+  TrendingUp,
+  Quote,
+  MapPin,
+  Mail,
+  X,
+  ChevronRight,
+  ChevronLeft,
+  Facebook,
+  Instagram,
+  Linkedin,
+  MessageCircle,
+  Loader2
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import Chatbot from './components/Chatbot';
