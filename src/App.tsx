@@ -619,15 +619,20 @@ const App: React.FC = () => {
       {/* Navbar */}
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 py-4 md:py-6 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-3 md:py-4' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center relative">
-          <button onClick={() => setActiveSection('home')} className="flex items-center gap-2 md:gap-3 group">
-       <div className="relative">
-  <img
-    src={logo}
-    alt="Assurances ELOMRANI"
-    className="h-8 md:h-14 w-auto"
-    referrerPolicy="no-referrer"
-  />
-</div>
+      <button onClick={() => setActiveSection('home')} className="flex items-center gap-2 md:gap-3 group">
+  <div className="relative">
+    <img
+      src={logo}
+      alt="Assurances ELOMRANI"
+      className="h-8 md:h-14 w-auto"
+    />
+    <div className="absolute -bottom-4 left-0 text-[8px] font-black text-axa-blue opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block"></div>
+  </div>
+  <div className={`flex flex-col leading-none text-left transition-colors ${isScrolled ? 'text-axa-blue' : 'text-white'}`}>
+    <span className="font-bold text-sm md:text-lg uppercase tracking-wider">Assurances ELOMRANI</span>
+    <span className="text-[7px] md:text-[10px] font-medium opacity-80 uppercase">AGENT GÉNÉRALE</span>
+  </div>
+</button>
 
 
               <div className="absolute -bottom-4 left-0 text-[8px] font-black text-axa-blue opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block"></div>
