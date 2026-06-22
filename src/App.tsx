@@ -39,6 +39,7 @@ const App: React.FC = () => {
   const slides = [
     {
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
+      
       tagline: "Votre partenaire de confiance",
       title: "Votre assurance, notre engagement.",
       description: "Protégez ce qui compte vraiment pour vous avec l'expertise d'un agent général AXA engagé et proche de vous."
