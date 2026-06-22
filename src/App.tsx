@@ -121,12 +121,11 @@ const App: React.FC = () => {
                 transition={{ duration: 1 }}
                 className="absolute inset-0"
               >
-                <img 
-                  src={slides[currentSlide].image} 
-                  alt="Assurances ELOMRANI" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
+               <img
+  src="/ae-logo.jpg"
+  alt="Assurances ELOMRANI"
+  className="h-8 md:h-14 w-auto"
+/>
                 <div className="absolute inset-0 bg-gradient-to-r from-axa-blue/95 via-axa-blue/60 to-transparent"></div>
               </motion.div>
             </AnimatePresence>
