@@ -1,4 +1,17 @@
-import React, { useState, useEffect } from 'react';
+<index.html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpeg" href="/ae-logo.jpg" />  ← ajoutez cette ligne ici
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assurances ELOMRANI</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+  import React, { useState, useEffect } from 'react';
 import logo from '/ae-logo.jpg';
 import {
   ShieldCheck,
