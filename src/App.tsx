@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logo from '/ae-logo.jpg';
-import favicon from '/ae-logo.jpg'
+import {
   ShieldCheck,
   ArrowRight,
   Phone,
@@ -346,7 +346,7 @@ const App: React.FC = () => {
                   </div>
                 </div>
                 <a
-                  href="https://wa.me/212522665908"
+                  href="https://wa.me/212661423455"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-start gap-4 p-4 bg-emerald-50/50 rounded-2xl hover:bg-emerald-50 border border-emerald-100 hover:border-emerald-300 transition-all cursor-pointer group"
@@ -404,17 +404,16 @@ const App: React.FC = () => {
                         message: "Demande de rappel rapide depuis le widget de contact direct"
                       };
                       try {
-                        const response = await fetch('/api/contact', {
+                        const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
                           method: 'POST',
-                          headers: { 'Content-Type': 'application/json' },
+                          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                           body: JSON.stringify(data)
                         });
-                        const result = await response.json();
-                        if (result.success) {
+                        if (response.ok) {
                           setIsFormSubmitted(true);
                           (e.target as HTMLFormElement).reset();
                         } else {
-                          alert(result.message || 'Erreur lors de l\'envoi.');
+                          alert('Erreur lors de l\'envoi. Merci de réessayer.');
                         }
                       } catch (error) {
                         alert('Erreur réseau.');
@@ -690,17 +689,15 @@ const App: React.FC = () => {
             </div>
             <p className="text-white/60 max-w-md mb-8 leading-relaxed">Votre agence de proximité à Casablanca, membre du réseau AXA Assurance Maroc. Nous vous accompagnons dans tous vos projets de protection et d'épargne.</p>
             <div className="flex flex-wrap gap-3">
-             <a href="https://facebook.com/..." target="_blank" rel="noopener noreferrer">
-    <i class="fab fa-facebook-f"></i>
-</a>
-
-<a href="https://instagram.com/..." target="_blank" rel="noopener noreferrer">
-    <i class="fab fa-instagram"></i>
-</a>
-
-<a href="https://linkedin.com/company/..." target="_blank" rel="noopener noreferrer">
-    <i class="fab fa-linkedin-in"></i>
-</a>
+              <a href="https://web.facebook.com/profile.php?id=61586493536222&locale=fr_FR" target="_blank" rel="noopener noreferrer" className="w-11 h-11 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white hover:text-axa-blue hover:border-white transition-all duration-500 group shadow-lg">
+                <Facebook size={18} className="group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://instagram.com/YOUR_HANDLE" target="_blank" rel="noopener noreferrer" className="w-11 h-11 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white hover:text-axa-blue hover:border-white transition-all duration-500 group shadow-lg">
+                <Instagram size={18} className="group-hover:scale-110 transition-transform" />
+              </a>
+              <a href="https://www.linkedin.com/in/fatima-elomrani-39b7a839b/" target="_blank" rel="noopener noreferrer" className="w-11 h-11 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white hover:text-axa-blue hover:border-white transition-all duration-500 group shadow-lg">
+                <Linkedin size={18} className="group-hover:scale-110 transition-transform" />
+              </a>
             </div>
           </div>
           <div>
@@ -806,17 +803,16 @@ const App: React.FC = () => {
                       message: "Demande d'informations sur l'offre spéciale depuis la popup d'appel à l'action"
                     };
                     try {
-                      const response = await fetch('/api/contact', {
+                      const response = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
                         method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
                         body: JSON.stringify(data)
                       });
-                      const result = await response.json();
-                      if (result.success) {
+                      if (response.ok) {
                         setIsPopupSubmitted(true);
                         sessionStorage.setItem('popup_submitted', 'true');
                       } else {
-                        alert(result.message || "Une erreur est survenue.");
+                        alert("Une erreur est survenue. Merci de réessayer.");
                       }
                     } catch (error) {
                       alert("Erreur de connexion. Veuillez réessayer.");
