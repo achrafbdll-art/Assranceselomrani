@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import logo from '/ae-logo.jpg';
-import {
+import favicon from '/ae-logo.jpg'
   ShieldCheck,
   ArrowRight,
   Phone,
