@@ -690,15 +690,17 @@ const App: React.FC = () => {
             </div>
             <p className="text-white/60 max-w-md mb-8 leading-relaxed">Votre agence de proximité à Casablanca, membre du réseau AXA Assurance Maroc. Nous vous accompagnons dans tous vos projets de protection et d'épargne.</p>
             <div className="flex flex-wrap gap-3">
-              <a href="#" className="w-11 h-11 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white hover:text-axa-blue hover:border-white transition-all duration-500 group shadow-lg">
-                <Facebook size={18} className="group-hover:scale-110 transition-transform" />
-              </a>
-              <a href="#" className="w-11 h-11 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white hover:text-axa-blue hover:border-white transition-all duration-500 group shadow-lg">
-                <Instagram size={18} className="group-hover:scale-110 transition-transform" />
-              </a>
-              <a href="#" className="w-11 h-11 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white hover:text-axa-blue hover:border-white transition-all duration-500 group shadow-lg">
-                <Linkedin size={18} className="group-hover:scale-110 transition-transform" />
-              </a>
+             <a href="https://facebook.com/..." target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-facebook-f"></i>
+</a>
+
+<a href="https://instagram.com/..." target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-instagram"></i>
+</a>
+
+<a href="https://linkedin.com/company/..." target="_blank" rel="noopener noreferrer">
+    <i class="fab fa-linkedin-in"></i>
+</a>
             </div>
           </div>
           <div>
