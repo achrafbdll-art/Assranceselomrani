@@ -732,7 +732,7 @@ const App: React.FC = () => {
           </div>
         </div>
         <div className="max-w-7xl mx-auto px-6 mt-20 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-sm">
-          <p>© 2026 Assurances ELOMRANI - Agent Général AXA. Tous droits réservés.Devlopper par www.assurleadcom.com</p>
+          <p>© 2026 Assurances ELOMRANI - Agent Général AXA. Tous droits réservés, Devlopper par www.assurleadcom.com</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-all">Mentions Légales</a>
             <a href="#" className="hover:text-white transition-all">Politique de Confidentialité</a>
