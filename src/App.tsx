@@ -735,7 +735,7 @@ const App: React.FC = () => {
           <p>© 2026 Assurances ELOMRANI - Agent Général AXA. Tous droits réservés, By Assur Lead Communicaation</p>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-all">Mentions Légales</a>
-            <a href="#" className="hover:text-white transition-all">Politique de Confidentialité</a>
+            <a href="#" className="hover:text-white transition-all">B ASSURLEAD COMMUNICATION</a>
           </div>
         </div>
       </footer>
