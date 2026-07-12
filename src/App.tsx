@@ -283,125 +283,109 @@ const App: React.FC = () => {
                       <div className="w-2 h-2 bg-axa-red rounded-full"></div>
                       {item.title}
                     </h3>
-                    <p className="text-white/70 text-sm">{item.desc}</p>
+                    <p className="text-white/60 text-sm leading-relaxed">{item.desc}</p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="relative hidden lg:block">
-              <div className="bg-white/10 p-8 rounded-2xl backdrop-blur-lg border border-white/20">
-                <Quote className="text-axa-red mb-6" size={40} />
-                <p className="text-2xl font-medium italic mb-6">"Un service exceptionnel et une équipe très professionnelle. Mme ELOMRANI a su trouver la meilleure couverture pour mon entreprise."</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-axa-red rounded-full flex items-center justify-center font-bold">M</div>
-                  <div>
-                    <p className="font-bold">Mohammed A.</p>
-                    <p className="text-white/60 text-sm">Chef d'entreprise</p>
-                  </div>
+            <div className="relative">
+              <div className="aspect-square rounded-full border-2 border-white/10 p-12 flex items-center justify-center relative">
+                <div className="absolute inset-0 animate-spin-slow opacity-20">
+                   <div className="absolute top-0 left-1/2 -translate-x-1/2 w-4 h-4 bg-axa-red rounded-full"></div>
+                </div>
+                <div className="text-center">
+                  <div className="text-7xl font-black mb-2">AXA</div>
+                  <div className="text-xl font-bold tracking-[0.3em] uppercase opacity-60">Maroc</div>
                 </div>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Contact */}
-        <section id="contact" className="py-20 px-6 md:px-12 lg:px-24 bg-slate-50">
-          <div className="max-w-7xl mx-auto grid lg:grid-cols-5 gap-16">
-            <div className="lg:col-span-2">
-              <h2 className="text-3xl md:text-4xl font-extrabold text-axa-blue mb-8">Prêt à être mieux protégé ?</h2>
-              <p className="text-slate-600 mb-10 text-lg">Contactez-nous pour une étude personnalisée de vos besoins ou rendez-vous directement en agence.</p>
-              <div className="space-y-8">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-axa-blue shadow-md"><MapPin /></div>
-                  <div>
-                    <p className="font-bold text-axa-blue">Notre Adresse</p>
-                    <p className="text-slate-500 text-sm">108 Bd Ali Yaâta, Casablanca 20250</p>
+        {/* Contact Form */}
+        <section id="contact" className="py-24 px-6 md:px-12 lg:px-24 bg-white zellig-pattern">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-5 gap-16">
+              <div className="lg:col-span-2 space-y-12">
+                <div>
+                  <span className="text-axa-red font-bold uppercase tracking-widest text-sm mb-4 block">Contactez-nous</span>
+                  <h2 className="text-4xl font-extrabold text-axa-blue mb-6">Prêt à sécuriser votre avenir ?</h2>
+                  <p className="text-lg text-slate-500 leading-relaxed">Passez nous voir en agence ou contactez-nous par téléphone. Nos experts sont là pour répondre à toutes vos questions.</p>
+                </div>
+                
+                <div className="space-y-8">
+                  <div className="flex items-start gap-6 group">
+                    <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-axa-blue group-hover:bg-axa-blue group-hover:text-white transition-all shadow-sm">
+                      <MapPin size={28} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-axa-blue text-lg mb-1">Notre Agence</h4>
+                      <p className="text-slate-500 font-medium">373 BD Mohammed VI, Résidence Al Yassamine 1er étage N°3, Casablanca 20000</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-6 group">
+                    <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-axa-blue group-hover:bg-axa-blue group-hover:text-white transition-all shadow-sm">
+                      <Phone size={28} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-axa-blue text-lg mb-1">Téléphone</h4>
+                      <p className="text-slate-500 font-medium">05 22 66 59 08</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-6 group">
+                    <div className="w-14 h-14 bg-slate-50 rounded-2xl flex items-center justify-center text-axa-blue group-hover:bg-axa-blue group-hover:text-white transition-all shadow-sm">
+                      <Mail size={28} />
+                    </div>
+                    <div>
+                      <h4 className="font-bold text-axa-blue text-lg mb-1">E-mail</h4>
+                      <p className="text-slate-500 font-medium">agence.elomrani@axa.ma</p>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-axa-blue shadow-md"><Phone /></div>
-                  <div>
-                    <p className="font-bold text-axa-blue">Téléphone</p>
-                    <p className="text-slate-500 text-sm">05 22 66 59 08</p>
-                  </div>
+
+                <div className="pt-8 border-t border-slate-100">
+                   <h4 className="font-bold text-axa-blue mb-4 uppercase tracking-widest text-xs">Suivez-nous</h4>
+                   <div className="flex gap-4">
+                      <a href="https://www.facebook.com/profile.php?id=61586493536222" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-axa-blue hover:bg-axa-blue hover:text-white transition-all"><Facebook size={20} /></a>
+                      <a href="https://www.instagram.com/assurances.elomrani/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-axa-blue hover:bg-axa-blue hover:text-white transition-all"><Instagram size={20} /></a>
+                      <a href="https://www.linkedin.com/in/fatima-elomrani-39b7a839b/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-axa-blue hover:bg-axa-blue hover:text-white transition-all"><Linkedin size={20} /></a>
+                   </div>
                 </div>
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-axa-blue shadow-md"><Mail /></div>
-                  <div>
-                    <p className="font-bold text-axa-blue">Email</p>
-                    <p className="text-slate-500 text-sm">contact@axa-elomrani.ma</p>
-                  </div>
-                </div>
-                <a 
-                  href="https://wa.me/212522665908" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-start gap-4 p-4 bg-emerald-50/50 rounded-2xl hover:bg-emerald-50 border border-emerald-100 hover:border-emerald-300 transition-all cursor-pointer group"
-                >
-                  <div className="w-12 h-12 bg-emerald-500 text-white rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition-transform duration-300">
-                    <MessageCircle fill="currentColor" size={24} />
-                  </div>
-                  <div>
-                    <p className="font-bold text-emerald-700 flex items-center gap-2">
-                      WhatsApp 
-                      <span className="inline-flex items-center gap-1 text-[10px] bg-emerald-500 text-white font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">
-                        <span className="w-1.5 h-1.5 rounded-full bg-white animate-ping"></span>
-                        Direct
-                      </span>
-                    </p>
-                    <p className="text-emerald-900/70 text-sm font-medium mt-0.5">Discuter en direct sur WhatsApp</p>
-                  </div>
-                </a>
               </div>
-            </div>
-            <div className="lg:col-span-3">
-              <div className="bg-white p-8 md:p-10 rounded-2xl shadow-2xl border border-slate-100 relative overflow-hidden">
+
+              <div className="lg:col-span-3 bg-white p-8 md:p-12 rounded-3xl shadow-2xl border border-slate-50 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-axa-blue/5 rounded-bl-full"></div>
+                
                 {isFormSubmitted ? (
                   <motion.div 
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="py-12 text-center space-y-6"
+                    className="h-full flex flex-col items-center justify-center text-center py-12"
                   >
-                    <div className="w-16 h-16 bg-green-50 text-green-500 rounded-full flex items-center justify-center mx-auto shadow-inner animate-bounce">
-                      <CheckCircle2 size={36} />
+                    <div className="w-20 h-20 bg-green-50 text-green-500 rounded-full flex items-center justify-center mb-8 shadow-inner">
+                      <CheckCircle2 size={40} />
                     </div>
-                    <div>
-                      <h3 className="text-2xl font-bold text-axa-blue">Votre Demande est Enregistrée !</h3>
-                      <p className="text-slate-500 mt-2 max-w-md mx-auto text-sm leading-relaxed">
-                        Merci pour votre confiance. Mme FATIMA EL OMRANI ou l'un de nos conseillers experts étudie vos besoins et vous recontactera très rapidement selon vos préférences.
-                      </p>
-                    </div>
-                    <button 
-                      onClick={() => setIsFormSubmitted(false)}
-                      className="bg-axa-blue hover:bg-blue-900 text-white px-6 py-2.5 rounded-xl font-bold text-sm transition-all shadow-md cursor-pointer"
-                    >
-                      Envoyer une autre demande
-                    </button>
+                    <h3 className="text-3xl font-bold text-axa-blue mb-4">Message Envoyé !</h3>
+                    <p className="text-slate-500 text-lg max-w-sm">Merci pour votre confiance. Un conseiller d'Assurances ELOMRANI vous contactera très prochainement.</p>
+                    <button onClick={() => setIsFormSubmitted(false)} className="mt-10 text-axa-blue font-bold hover:underline">Envoyer un autre message</button>
                   </motion.div>
                 ) : (
                   <form 
-                    className="space-y-6 text-left" 
-                    onSubmit={async (e) => { 
-                      e.preventDefault(); 
+                    className="space-y-8"
+                    onSubmit={async (e) => {
+                      e.preventDefault();
                       setSubmittingPhone(true);
                       const formData = new FormData(e.currentTarget);
-                      const clientName = formData.get('name') as string;
-                      const clientPhone = formData.get('phone') as string;
-                      const insuranceType = formData.get('type') as string;
-                      const email = formData.get('email') as string;
-                      const city = formData.get('city') as string;
-                      const pref = formData.get('preference') as string;
-                      const userMsg = formData.get('client_message') as string;
-
-                      const detailedMessage = `Email: ${email}\nVille: ${city}\nPréférence: ${pref}\n\nMessage ou besoins détaillés:\n${userMsg || 'Aucun message spécifique fourni.'}`;
-
                       const data = {
-                        name: clientName,
-                        phone: clientPhone,
-                        type: insuranceType,
-                        message: detailedMessage
+                        name: formData.get('client_name'),
+                        phone: formData.get('client_phone'),
+                        type: formData.get('insurance_type'),
+                        message: formData.get('client_message'),
+                        preference: formData.get('preference')
                       };
-                      
+
                       try {
                         const response = await fetch('/api/contact', {
                           method: 'POST',
@@ -411,93 +395,32 @@ const App: React.FC = () => {
                         const result = await response.json();
                         if (result.success) {
                           setIsFormSubmitted(true);
-                          (e.target as HTMLFormElement).reset();
                         } else {
-                          alert(result.message || 'Erreur lors de l\'envoi.');
+                          alert(result.message || "Une erreur est survenue.");
                         }
                       } catch (error) {
-                        alert('Erreur réseau. Veuillez réessayer.');
+                        alert("Erreur de connexion. Veuillez réessayer.");
                       } finally {
                         setSubmittingPhone(false);
                       }
                     }}
                   >
-                    <div className="space-y-2">
-                      <span className="text-axa-red font-bold uppercase tracking-wider text-xs block">Formulaire de Contact Détaillé</span>
-                      <h3 className="text-2xl font-bold text-axa-blue">Demande de Devis Personnalisé</h3>
-                      <p className="text-slate-500 text-sm">Remplissez ces quelques champs afin que nous puissions élaborer la formule optimale pour votre situation.</p>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {/* Name */}
+                    <div className="grid md:grid-cols-2 gap-8">
                       <div className="space-y-2">
                         <label className="text-xs font-bold text-axa-blue uppercase tracking-wider block">Nom Complet *</label>
-                        <input 
-                          name="name" 
-                          type="text" 
-                          placeholder="Ex: Ahmed El Mansouri" 
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-semibold text-slate-700 text-sm" 
-                          required 
-                        />
+                        <input name="client_name" type="text" placeholder="Ex: Jean Dupont" className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-semibold text-slate-700" required />
                       </div>
-
-                      {/* Email */}
                       <div className="space-y-2">
-                        <label className="text-xs font-bold text-axa-blue uppercase tracking-wider block">Adresse E-mail *</label>
-                        <input 
-                          name="email" 
-                          type="email" 
-                          placeholder="Ex: ahmed@mail.com" 
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-semibold text-slate-700 text-sm" 
-                          required 
-                        />
+                        <label className="text-xs font-bold text-axa-blue uppercase tracking-wider block">Téléphone *</label>
+                        <input name="client_phone" type="tel" placeholder="06 12 34 56 78" className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-semibold text-slate-700" required />
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {/* Phone */}
+                    <div className="grid md:grid-cols-2 gap-8">
                       <div className="space-y-2">
-                        <label className="text-xs font-bold text-axa-blue uppercase tracking-wider block">Numéro de Mobile *</label>
-                        <div className="relative">
-                          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 font-bold text-sm select-none border-r border-slate-200 pr-3">+212</span>
-                          <input 
-                            name="phone" 
-                            type="tel" 
-                            placeholder="6 12 34 56 78" 
-                            className="w-full pl-22 pr-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-bold text-slate-700 tracking-wide text-sm" 
-                            required 
-                          />
-                        </div>
-                      </div>
-
-                      {/* City */}
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold text-axa-blue uppercase tracking-wider block">Votre Ville *</label>
-                        <select 
-                          name="city"
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none bg-white focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-semibold text-slate-700 text-sm cursor-pointer"
-                          required
-                        >
-                          <option value="Casablanca">Casablanca</option>
-                          <option value="Rabat">Rabat</option>
-                          <option value="Marrakech">Marrakech</option>
-                          <option value="Tanger">Tanger</option>
-                          <option value="Fès">Fès</option>
-                          <option value="Agadir">Agadir</option>
-                          <option value="Autre au Maroc">Autre au Maroc</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4">
-                      {/* Product Type */}
-                      <div className="space-y-2">
-                        <label className="text-xs font-bold text-axa-blue uppercase tracking-wider block">Type d'Assurance Souhaité *</label>
-                        <select 
-                          name="type"
-                          className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none bg-white focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-semibold text-slate-700 text-sm cursor-pointer"
-                          required
-                        >
+                        <label className="text-xs font-bold text-axa-blue uppercase tracking-wider block">Type d'Assurance *</label>
+                        <select name="insurance_type" className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none focus:border-axa-blue focus:ring-2 focus:ring-axa-blue/10 transition-all font-semibold text-slate-700 appearance-none bg-slate-50" required>
+                          <option value="">Sélectionnez une option</option>
                           <option value="Assurance Automobile">Assurance Automobile 🚗</option>
                           <option value="Assurance Habitation">Assurance Habitation 🏠</option>
                           <option value="Assurance Santé">Assurance Santé ❤️</option>
@@ -734,67 +657,28 @@ const App: React.FC = () => {
                 icon: Globe,
                 desc: "Voyagez l'esprit tranquille à l'international grâce à notre assurance d'assistance médicale conforme à 100% aux critères des visas Schengen.",
                 formulas: [
-                  { name: "Formule Schengen Conforme", details: "Couverture médicale obligatoire de minimum 30 000 € requise pour l'octroi des visas européens." },
-                  { name: "Formule Monde Entier", details: "Plafonds rehaussés pour les pays à frais de santé élevés (USA, Canada, Japon, etc.)." }
+                  { name: "Formule Schengen Conforme", details: "Couverture médicale obligatoire de minimum 30 000 € requise pour l'octroi du visa." },
+                  { name: "Formule Monde Entier", details: "Assistance globale incluant les USA, le Canada et l'Asie avec des plafonds de prise en charge élevés." }
                 ],
                 features: [
-                  "Prise en charge directe et immédiate des frais d'hospitalisation d'urgence médicale à l'étranger",
-                  "Rapatriement sanitaire et médical H24 vers le Maroc géré par l'assistance technique AXA",
-                  "Assistance et conseil téléphonique continu pour la perte de documents de voyage officiels",
-                  "Indemnisation compensatoire forfaitaire en cas de retard de vol ou de correspondance de plus de 4 heures"
+                  "Prise en charge directe des frais médicaux et d'hospitalisation d'urgence à l'étranger",
+                  "Rapatriement sanitaire et transport médical organisé par AXA Assistance 24h/24",
+                  "Assurance perte ou vol de bagages et assistance juridique à l'étranger incluse",
+                  "Émission instantanée de votre attestation d'assurance voyage pour votre dossier de visa"
                 ],
                 badge: "Visa Schengen"
-              },
-              { 
-                title: "Multirisque Professionnelle & PME", 
-                category: "pro",
-                img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop",
-                icon: Briefcase,
-                desc: "Protégez l'activité de votre commerce, bureau, atelier ou PME. Sécurisez vos locaux professionnels, vos marchandises et votre responsabilité civile.",
-                formulas: [
-                  { name: "Option Commerce & Artisanat", details: "Protection ciblée des points de vente physique, stocks, vitrines et responsabilité d'exploitation." },
-                  { name: "Option Bureau & Professions Libérales", details: "Couvre les équipements techniques, le matériel informatique, les archives et la RC Professionnelle." },
-                  { name: "Option PME & Entreprises de Services", details: "Une couverture sur-mesure pour les parcs machines, flotte auto professionnelle et perte d'exploitation." }
-                ],
-                features: [
-                  "Garantie Perte d'Exploitation : compensation financière en cas d'arrêt d'activité suite à un sinistre",
-                  "Responsabilité Civile Professionnelle (RC Pro) protégeant contre toute erreur, omission ou faute professionnelle",
-                  "Prise en charge intégrale des dommages électriques ou incendies frappant vos serveurs et machines de production",
-                  "Audit personnalisé des risques opérationnels réalisé directement par des ingénieurs préventionnistes d'AXA"
-                ],
-                badge: "Entreprises"
-              },
-              { 
-                title: "Épargne & Retraite Active", 
-                category: "epargne",
-                img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?q=80&w=2070&auto=format&fit=crop",
-                icon: TrendingUp,
-                desc: "Valorisez vos économies et préparez activement vos futurs projets de vie ou votre retraite avec des solutions de placement performantes et avantageuses.",
-                formulas: [
-                  { name: "Plan Retraite Active", details: "Épargnez à votre rythme tout en bénéficiant de la déductibilité fiscale intégrale de vos cotisations au Maroc." },
-                  { name: "Plan Épargne Éducation", details: "Constituez un capital progressif et garanti pour financer en toute sérénité les études supérieures de vos enfants." }
-                ],
-                features: [
-                  "Taux de rendement annuel hautement compétitif avec capital net 100% garanti et sécurisé",
-                  "Versement d'une flexibilité absolue : optez pour des versements programmés ou des versements libres exceptionnels",
-                  "Optimisation fiscale majeure en parfaite conformité avec la réglementation de l'impôt sur le revenu (IR)",
-                  "Options de sortie sur-mesure au terme du contrat : capital unique disponible ou rente viagère mensuelle"
-                ],
-                badge: "Fiscalité Optimisée"
               }
             ]
-              .filter(o => selectedOfferCategory === 'all' || o.category === selectedOfferCategory)
+              .filter(offer => selectedOfferCategory === 'all' || offer.category === selectedOfferCategory)
               .map((offer, idx) => {
                 const IconComponent = offer.icon;
                 return (
                   <motion.div 
+                    key={idx}
                     layout
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                    key={offer.title} 
-                    className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-100 flex flex-col md:flex-row text-left group hover:shadow-2xl transition-all duration-500"
+                    className="flex flex-col md:flex-row bg-white rounded-3xl overflow-hidden shadow-xl border border-slate-100 group hover:shadow-2xl transition-all duration-500"
                   >
                     {/* Card Image */}
                     <div className="md:w-2/5 h-64 md:h-auto relative overflow-hidden">
@@ -903,8 +787,8 @@ const App: React.FC = () => {
             <div className="relative">
               <img 
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/1200px-AXA_Logo.svg.png" 
-                alt="Assurances ELOMRANI" 
-                className="h-8 md:h-14 w-auto" 
+                alt="AXA Logo" 
+                className={`h-8 md:h-14 w-auto transition-all duration-300 ${isScrolled ? 'brightness-100' : 'brightness-0 invert'}`} 
                 referrerPolicy="no-referrer"
               />
               <div className="absolute -bottom-4 left-0 text-[8px] font-black text-axa-blue opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block">NOW YOU CAN</div>
@@ -978,8 +862,8 @@ const App: React.FC = () => {
               <div className="relative group">
                 <img 
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/1200px-AXA_Logo.svg.png" 
-                  alt="Assurances ELOMRANI" 
-                  className="h-12 w-auto" 
+                  alt="AXA Logo" 
+                  className="h-12 w-auto brightness-0 invert" 
                   referrerPolicy="no-referrer"
                 />
               </div>
