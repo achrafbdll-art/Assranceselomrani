@@ -107,7 +107,7 @@ const App: React.FC = () => {
                 className="absolute inset-0"
               >
                 <img 
-                  src={slides[currentSlide].image} 
+                  src={ae-logo.jpg].image} 
                   alt="Assurances ELOMRANI" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
