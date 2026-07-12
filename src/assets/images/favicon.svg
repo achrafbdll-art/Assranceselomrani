@@ -1,0 +1,27 @@
+<svg viewBox="0 0 500 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(0, 50)">
+    {/* Blue 'A' (Left side) */}
+    <path 
+      d="M 100 360 L 55 360 C 45 360 40 355 40 345 L 40 110 C 40 60 75 40 110 40 L 160 40 L 250 360 L 195 360 L 165 255 L 125 255 L 100 360 Z" 
+      fill="#0F3F99" 
+      fillRule="evenodd"
+    />
+    {/* Counter/Hole inside 'A' */}
+    <path 
+      d="M 115 205 L 132 120 L 150 205 Z" 
+      fill="white" 
+    />
+
+    {/* Red Diagonal Stripe (Center) */}
+    <path 
+      d="M 210 40 L 250 40 L 340 330 C 343 345 330 360 310 360 L 270 360 L 180 70 C 177 55 190 40 210 40 Z" 
+      fill="#E01A22" 
+    />
+
+    {/* Blue 'E' (Right side) */}
+    <path 
+      d="M 270 40 L 450 40 C 455 40 460 45 460 50 L 460 90 C 460 95 455 100 450 100 L 347 100 L 366 170 L 410 170 C 415 170 420 175 420 180 L 420 215 C 420 220 415 225 410 225 L 382 225 L 403 300 L 450 300 C 455 300 460 305 460 310 L 460 350 C 460 355 455 360 450 360 L 360 360 L 270 40 Z" 
+      fill="#0F3F99" 
+    />
+  </g>
+</svg>
