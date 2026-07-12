@@ -7,6 +7,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import Chatbot from './components/Chatbot';
 import WhatsAppWidget from './components/WhatsAppWidget';
+import AgencyLogo from './components/AgencyLogo';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<'home' | 'history' | 'offers'>('home');
@@ -107,7 +108,7 @@ const App: React.FC = () => {
                 className="absolute inset-0"
               >
                 <img 
-                  src={ae-logo.jpg} 
+                  src={slides[currentSlide].image} 
                   alt="Assurances ELOMRANI" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
@@ -716,8 +717,8 @@ const App: React.FC = () => {
                 icon: HeartPulse,
                 desc: "Parce que votre santé est primordiale, notre assurance offre un remboursement exceptionnel de vos soins médicaux et d'hospitalisation.",
                 formulas: [
-                  { name: "SEHASSUR Nationale", details: "Prise en charge optimisée au Maroc avec tiers-payant automatique dans un large réseau médical." },
-                  { name: "SEHASSUR Internationale", details: "Couverture mondiale haut de gamme incluant les cliniques de prestige à l'étranger et l'évacuation d'urgence." }
+                  { name: "SEHA Nationale", details: "Prise en charge optimisée au Maroc avec tiers-payant automatique dans un large réseau médical." },
+                  { name: "SEHA Internationale", details: "Couverture mondiale haut de gamme incluant les cliniques de prestige à l'étranger et l'évacuation d'urgence." }
                 ],
                 features: [
                   "Remboursement ultra-rapide de vos dossiers de maladie sous un délai contractuel de 48h",
@@ -898,14 +899,8 @@ const App: React.FC = () => {
       <nav className={`fixed top-0 w-full z-50 transition-all duration-300 py-4 md:py-6 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-3 md:py-4' : 'bg-transparent'}`}>
         <div className="max-w-7xl mx-auto px-4 md:px-6 flex justify-between items-center relative">
           <button onClick={() => setActiveSection('home')} className="flex items-center gap-2 md:gap-3 group">
-            <div className="relative">
-              <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/1200px-AXA_Logo.svg.png" 
-                alt="Assurances ELOMRANI" 
-                className="h-8 md:h-14 w-auto" 
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute -bottom-4 left-0 text-[8px] font-black text-axa-blue opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden md:block">NOW YOU CAN</div>
+            <div className="relative flex items-center">
+              <AgencyLogo className="h-10 md:h-16 w-auto bg-white p-2 rounded-2xl shadow-md border border-slate-100/50 transition-all duration-300 group-hover:scale-105" />
             </div>
             <div className={`flex flex-col leading-none text-left transition-colors ${isScrolled ? 'text-axa-blue' : 'text-white'}`}>
               <span className="font-bold text-sm md:text-lg uppercase tracking-wider">Assurances ELOMRANI</span>
@@ -973,13 +968,8 @@ const App: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12 text-left">
           <div className="col-span-1 md:col-span-2">
             <div className="flex items-center gap-3 mb-8">
-              <div className="relative group">
-                <img 
-                  src="ae-logo.jpgg" 
-                  alt="Assurances ELOMRANI" 
-                  className="h-12 w-auto" 
-                  referrerPolicy="no-referrer"
-                />
+              <div className="relative group flex items-center">
+                <AgencyLogo className="h-14 w-auto bg-white p-2 rounded-2xl shadow-md border border-white/10 transition-transform group-hover:scale-105 duration-300" />
               </div>
               <div className="flex flex-col leading-none">
                 <span className="font-bold text-lg uppercase tracking-wider">Assurances ELOMRANI</span>
