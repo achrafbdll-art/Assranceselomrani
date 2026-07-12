@@ -7,7 +7,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import Chatbot from './components/Chatbot';
 import WhatsAppWidget from './components/WhatsAppWidget';
-<link rel="icon" type="image/jpeg" href="/ae-logo.jpg" />
+
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<'home' | 'history' | 'offers'>('home');
   const [isScrolled, setIsScrolled] = useState(false);
@@ -106,13 +106,12 @@ const App: React.FC = () => {
                 transition={{ duration: 1 }}
                 className="absolute inset-0"
               >
-               import logo from '/ae-logo.jpg'; // ← en haut du fichier
-// ...
-<img 
-  src={logo}
-  alt="Assurances ELOMRANI" 
-  className="h-8 md:h-14 w-auto" 
-/>
+                <img 
+                  src={slides[currentSlide].image} 
+                  alt="Assurances ELOMRANI" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
                 <div className="absolute inset-0 bg-gradient-to-r from-axa-blue/95 via-axa-blue/60 to-transparent"></div>
               </motion.div>
             </AnimatePresence>
