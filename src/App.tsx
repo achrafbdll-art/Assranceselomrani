@@ -1,12 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  ShieldCheck, ArrowRight, Phone, CheckCircle2, Car, Home, HeartPulse, 
-  Briefcase, TrendingUp, Quote, MapPin, Mail, X, Menu, ChevronRight, ChevronLeft,
-  Facebook, Instagram, Linkedin, Twitter, MessageCircle, Github, Globe, Send, Loader2
-} from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
-import Chatbot from './components/Chatbot';
-import WhatsAppWidget from './components/WhatsAppWidget';
+<index.html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpeg" href="/ae-logo.jpg" />  ← ajoutez cette ligne ici
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Assurances ELOMRANI</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+  import React, { useState, useEffect } from 'react';
+import logo from '/ae-logo.jpg';
 
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<'home' | 'history' | 'offers'>('home');
