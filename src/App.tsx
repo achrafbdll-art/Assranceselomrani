@@ -107,7 +107,7 @@ const App: React.FC = () => {
                 className="absolute inset-0"
               >
                 <img 
-                  src={ae-logo.jpg].image} 
+                  src={slides[currentSlide].image} 
                   alt="Assurances ELOMRANI" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
@@ -739,9 +739,7 @@ const App: React.FC = () => {
                 ],
                 features: [
                   "Prise en charge directe et immédiate des frais d'hospitalisation d'urgence médicale à l'étranger",
-                  "Rapatriement sanitaire et médical H24 vers le Maroc géré par l'assistance technique AXA",
-                  "Assistance et conseil téléphonique continu pour la perte de documents de voyage officiels",
-                  "Indemnisation compensatoire forfaitaire en cas de retard de vol ou de correspondance de plus de 4 heures"
+                  "Rapatriement sanitaire et médical H24 vers le Maroc géré par l'assistance technique AXA"
                 ],
                 badge: "Visa Schengen"
               },
