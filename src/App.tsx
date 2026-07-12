@@ -106,31 +106,12 @@ const App: React.FC = () => {
                 transition={{ duration: 1 }}
                 className="absolute inset-0"
               >
-          import logo from '/ae-logo.jpg'; // ← en haut du fichier
-// ...
-<img 
-  src={logo}
-  alt="Assurances ELOMRANI" 
-  className="h-8 md:h-14 w-auto" 
-/>
-
-Footer — remplace :
-jsx<img 
-  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/1200px-AXA_Logo.svg.png" 
-  alt="Assurances ELOMRANI" 
-  className="h-12 w-auto" 
-  referrerPolicy="no-referrer"
-/>
-Par :
-jsx<img 
-  src={logo}
-  alt="Assurances ELOMRANI" 
-  className="h-12 w-auto" 
-/>
-
-Vérifie aussi que ae-logo.jpg est bien dans le dossier public/ à la racine du projet. Si le fichier est dans src/assets/ à la place, l'import devient :
-jsximport logo from './assets/ae-logo.jpg';
-La règle Vite est simple : fichiers dans public/ → import logo from '/ae-logo.jpg', fichiers dans src/assets/ → import logo from './assets/ae-logo.jpg'.
+                <img 
+                  src={slides[currentSlide].image} 
+                  alt="Assurances ELOMRANI" 
+                  className="w-full h-full object-cover"
+                  referrerPolicy="no-referrer"
+                />
                 <div className="absolute inset-0 bg-gradient-to-r from-axa-blue/95 via-axa-blue/60 to-transparent"></div>
               </motion.div>
             </AnimatePresence>
@@ -1010,7 +991,7 @@ La règle Vite est simple : fichiers dans public/ → import logo from '/ae-logo
             <p className="text-white/60 max-w-md mb-8 leading-relaxed">Votre agence de proximité à Casablanca, membre du réseau AXA Assurance Maroc. Nous vous accompagnons dans tous vos projets de protection et d'épargne.</p>
             <div className="flex flex-wrap gap-3">
               <a 
-                href="https://www.facebook.com/AXAMaroc" 
+                href="https://www.facebook.com/profile.php?id=61586493536222" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-11 h-11 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white hover:text-axa-blue hover:border-white transition-all duration-500 group shadow-lg"
@@ -1018,7 +999,7 @@ La règle Vite est simple : fichiers dans public/ → import logo from '/ae-logo
                 <Facebook size={18} className="group-hover:scale-110 transition-transform" />
               </a>
               <a 
-                href="https://www.instagram.com/axamaroc" 
+                href="https://www.instagram.com/assurances.elomrani/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-11 h-11 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white hover:text-axa-blue hover:border-white transition-all duration-500 group shadow-lg"
@@ -1026,7 +1007,7 @@ La règle Vite est simple : fichiers dans public/ → import logo from '/ae-logo
                 <Instagram size={18} className="group-hover:scale-110 transition-transform" />
               </a>
               <a 
-                href="https://www.linkedin.com/company/axa-assurance-maroc" 
+                href="https://www.linkedin.com/in/fatima-elomrani-39b7a839b/" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-11 h-11 border border-white/10 rounded-2xl flex items-center justify-center hover:bg-white hover:text-axa-blue hover:border-white transition-all duration-500 group shadow-lg"
