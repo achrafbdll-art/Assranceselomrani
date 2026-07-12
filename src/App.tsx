@@ -716,8 +716,8 @@ const App: React.FC = () => {
                 icon: HeartPulse,
                 desc: "Parce que votre santé est primordiale, notre assurance offre un remboursement exceptionnel de vos soins médicaux et d'hospitalisation.",
                 formulas: [
-                  { name: "SEHA Nationale", details: "Prise en charge optimisée au Maroc avec tiers-payant automatique dans un large réseau médical." },
-                  { name: "SEHA Internationale", details: "Couverture mondiale haut de gamme incluant les cliniques de prestige à l'étranger et l'évacuation d'urgence." }
+                  { name: "SEHASSUR Nationale", details: "Prise en charge optimisée au Maroc avec tiers-payant automatique dans un large réseau médical." },
+                  { name: "SEHASSUR Internationale", details: "Couverture mondiale haut de gamme incluant les cliniques de prestige à l'étranger et l'évacuation d'urgence." }
                 ],
                 features: [
                   "Remboursement ultra-rapide de vos dossiers de maladie sous un délai contractuel de 48h",
@@ -975,7 +975,7 @@ const App: React.FC = () => {
             <div className="flex items-center gap-3 mb-8">
               <div className="relative group">
                 <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/1200px-AXA_Logo.svg.png" 
+                  src="ae-logo.jpgg" 
                   alt="Assurances ELOMRANI" 
                   className="h-12 w-auto" 
                   referrerPolicy="no-referrer"
