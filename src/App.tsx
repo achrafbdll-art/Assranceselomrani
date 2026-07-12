@@ -7,7 +7,7 @@ import {
 import { motion, AnimatePresence } from 'motion/react';
 import Chatbot from './components/Chatbot';
 import WhatsAppWidget from './components/WhatsAppWidget';
-
+<link rel="icon" type="image/jpeg" href="/ae-logo.jpg" />
 const App: React.FC = () => {
   const [activeSection, setActiveSection] = useState<'home' | 'history' | 'offers'>('home');
   const [isScrolled, setIsScrolled] = useState(false);
