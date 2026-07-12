@@ -106,12 +106,31 @@ const App: React.FC = () => {
                 transition={{ duration: 1 }}
                 className="absolute inset-0"
               >
-                <img 
-                  src={slides[currentSlide].image} 
-                  alt="Assurances ELOMRANI" 
-                  className="w-full h-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
+          import logo from '/ae-logo.jpg'; // ← en haut du fichier
+// ...
+<img 
+  src={logo}
+  alt="Assurances ELOMRANI" 
+  className="h-8 md:h-14 w-auto" 
+/>
+
+Footer — remplace :
+jsx<img 
+  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/1200px-AXA_Logo.svg.png" 
+  alt="Assurances ELOMRANI" 
+  className="h-12 w-auto" 
+  referrerPolicy="no-referrer"
+/>
+Par :
+jsx<img 
+  src={logo}
+  alt="Assurances ELOMRANI" 
+  className="h-12 w-auto" 
+/>
+
+Vérifie aussi que ae-logo.jpg est bien dans le dossier public/ à la racine du projet. Si le fichier est dans src/assets/ à la place, l'import devient :
+jsximport logo from './assets/ae-logo.jpg';
+La règle Vite est simple : fichiers dans public/ → import logo from '/ae-logo.jpg', fichiers dans src/assets/ → import logo from './assets/ae-logo.jpg'.
                 <div className="absolute inset-0 bg-gradient-to-r from-axa-blue/95 via-axa-blue/60 to-transparent"></div>
               </motion.div>
             </AnimatePresence>
