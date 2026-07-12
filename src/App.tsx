@@ -107,7 +107,7 @@ const App: React.FC = () => {
                 className="absolute inset-0"
               >
                 <img 
-                  src={slides[currentSlide].image} 
+                  src={ae-logo.jpg].image} 
                   alt="Assurances ELOMRANI" 
                   className="w-full h-full object-cover"
                   referrerPolicy="no-referrer"
@@ -786,8 +786,8 @@ const App: React.FC = () => {
           <button onClick={() => setActiveSection('home')} className="flex items-center gap-2 md:gap-3 group">
             <div className="relative">
               <img 
-                src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/1200px-AXA_Logo.svg.png" 
-                alt="AXA Logo" 
+                src="ae-logo.jpg" 
+                alt="ae-logo.jpg" 
                 className={`h-8 md:h-14 w-auto transition-all duration-300 ${isScrolled ? 'brightness-100' : 'brightness-0 invert'}`} 
                 referrerPolicy="no-referrer"
               />
@@ -861,8 +861,8 @@ const App: React.FC = () => {
             <div className="flex items-center gap-3 mb-8">
               <div className="relative group">
                 <img 
-                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/AXA_Logo.svg/1200px-AXA_Logo.svg.png" 
-                  alt="AXA Logo" 
+                  src="ae-logo.jpg" 
+                  alt="ae-logo.jpg" 
                   className="h-12 w-auto brightness-0 invert" 
                   referrerPolicy="no-referrer"
                 />
