@@ -14,7 +14,7 @@ const WhatsAppWidget: React.FC = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const phoneNumber = "212522665908"; // Standard formatted WhatsApp number
+  const phoneNumber = "212661423455"; // Standard formatted WhatsApp number
 
   const buildWaLink = (message: string) => {
     return `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
@@ -123,8 +123,8 @@ const WhatsAppWidget: React.FC = () => {
                 Démarrer une discussion libre
               </a>
               <div className="text-center mt-2.5">
-                <a href="tel:0522665908" className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-axa-blue font-semibold transition-colors">
-                  <Phone size={12} /> Ou appelez le 05 22 66 59 08
+                <a href="tel:+212661423455" className="inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-axa-blue font-semibold transition-colors">
+                  <Phone size={12} /> Ou appelez le +212 661-423455
                 </a>
               </div>
             </div>

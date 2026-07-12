@@ -147,7 +147,7 @@ const App: React.FC = () => {
                   Obtenir un devis gratuit <ArrowRight />
                 </button>
                 <a 
-                  href="tel:0522665908" 
+                  href="tel:+212661423455" 
                   className="bg-white text-axa-blue px-8 py-4 rounded-sm font-bold text-lg flex items-center justify-center gap-2 hover:bg-slate-100 transition-all shadow-xl"
                 >
                   <Phone /> Être rappelé
@@ -323,7 +323,7 @@ const App: React.FC = () => {
                   <div className="w-12 h-12 bg-white rounded-lg flex items-center justify-center text-axa-blue shadow-md"><Phone /></div>
                   <div>
                     <p className="font-bold text-axa-blue">Téléphone</p>
-                    <p className="text-slate-500 text-sm">05 22 66 59 08</p>
+                    <p className="text-slate-500 text-sm">+212 661-423455</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4">
@@ -334,7 +334,7 @@ const App: React.FC = () => {
                   </div>
                 </div>
                 <a 
-                  href="https://wa.me/212522665908" 
+                  href="https://wa.me/212661423455" 
                   target="_blank" 
                   rel="noopener noreferrer" 
                   className="flex items-start gap-4 p-4 bg-emerald-50/50 rounded-2xl hover:bg-emerald-50 border border-emerald-100 hover:border-emerald-300 transition-all cursor-pointer group"
@@ -400,7 +400,11 @@ const App: React.FC = () => {
                         name: clientName,
                         phone: clientPhone,
                         type: insuranceType,
-                        message: detailedMessage
+                        message: detailedMessage,
+                        email: email,
+                        city: city,
+                        preference: pref,
+                        client_message: userMsg
                       };
                       
                       try {
@@ -917,7 +921,7 @@ const App: React.FC = () => {
 
           {/* Desktop only menu button if needed, otherwise hidden on mobile in favor of bottom nav */}
           <div className="md:hidden flex items-center gap-4">
-             <a href="tel:0522665908" className={`p-2 rounded-full ${isScrolled ? 'bg-axa-blue text-white' : 'bg-white text-axa-blue'}`}>
+             <a href="tel:+212661423455" className={`p-2 rounded-full ${isScrolled ? 'bg-axa-blue text-white' : 'bg-white text-axa-blue'}`}>
                 <Phone size={18} />
              </a>
           </div>
@@ -1177,10 +1181,10 @@ const App: React.FC = () => {
                   <div className="pt-2 border-t border-slate-100">
                     <p className="text-xs text-slate-400 mb-2">Ou contactez notre agence directement :</p>
                     <a 
-                      href="tel:0522665908" 
+                      href="tel:+212661423455" 
                       className="inline-flex items-center gap-2 text-axa-blue font-bold text-sm hover:underline"
                     >
-                      <Phone size={14} /> 05 22 66 59 08
+                      <Phone size={14} /> +212 661-423455
                     </a>
                   </div>
                 </form>
