@@ -707,8 +707,6 @@ const App: React.FC = () => {
                   { name: "Option Propriétaire Non-Occupant", details: "Garantit votre patrimoine immobilier contre les sinistres majeurs pendant que le bien est loué ou vide." }
                 ],
                 features: [
-                  "Assistance dépannage d'urgence 24h/24 en moins de 2 heures (Plombier, Serrurier, Électricien)",
-                  "Indemnisation en valeur à neuf sur vos équipements multimédias et électroménagers récents",
                   "Responsabilité Civile Chef de Famille incluse pour couvrir tous les membres du foyer",
                   "Garanties complètes : Vol, Incendie, Dégâts des eaux, Bris de vitres et Catastrophes Naturelles"
                 ],
@@ -725,7 +723,6 @@ const App: React.FC = () => {
                   { name: "SEHA Internationale", details: "Couverture mondiale haut de gamme incluant les cliniques de prestige à l'étranger et l'évacuation d'urgence." }
                 ],
                 features: [
-                  "Remboursement ultra-rapide de vos dossiers de maladie sous un délai contractuel de 48h",
                   "Tiers-payant instantané en cas d'hospitalisation ou de chirurgie pour vous éviter toute avance de frais",
                   "Couverture étendue pour la maternité, les soins dentaires, l'optique et les affections de longue durée (ALD)",
                   "Service exclusif de téléconsultation médicale gratuite accessible en continu depuis votre smartphone"
@@ -1030,7 +1027,7 @@ const App: React.FC = () => {
           <div className="flex flex-col md:flex-row items-center gap-2 md:gap-4 text-center md:text-left">
             <p>© 2026 Assurances ELOMRANI - Agent Général AXA. Tous droits réservés.</p>
             <span className="hidden md:inline text-white/20">|</span>
-            <p className="text-xs">By <span className="font-extrabold tracking-wider text-white/50 hover:text-white transition-colors">ASSURLEADCOMMUNICATION</span></p>
+            <p className="text-xs">By <a href="https://www.assurleadcom.com/" target="_blank" rel="noopener noreferrer" className="font-extrabold tracking-wider text-white/50 hover:text-white transition-colors">ASSURLEADCOMMUNICATION</a></p>
           </div>
           <div className="flex gap-8">
             <a href="#" className="hover:text-white transition-all">Mentions Légales</a>
